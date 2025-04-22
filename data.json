@@ -1,0 +1,53 @@
+{
+    "tagsData": {
+        "categories": [
+            {
+                "id": "sales",
+                "name": "Sales Tags",
+                "tags": [
+                    { "id": "1", "name": "Invoice Inquiry", "content": "Invoice Inquiry [ADSL]" },
+                    { "id": "2", "name": "Early renewal", "content": "Early renewal [ADSL]" }
+                ]
+            },
+            {
+                "id": "tech",
+                "name": "Tech Tags",
+                "tags": [
+                    { "id": "3", "name": "Physical Problem", "content": "Physical Problem [T]" },
+                    { "id": "4", "name": "BLQ", "content": "BLQ [T] [ADSL]" }
+                ]
+            },
+            {
+                "id": "voice",
+                "name": "Voice Tags",
+                "tags": [
+                    { "id": "5", "name": "FCC New Ticket", "content": "FCC New Ticket { Voice }" },
+                    { "id": "6", "name": "FCC Within SLA", "content": "FCC Within SLA { Voice }" }
+                ]
+            }
+        ],
+        "currentCategory": "sales"
+    },
+    "candatData": {
+        "categories": [
+            {
+                "id": "main1",
+                "name": "Main Category 1",
+                "parentId": null,
+                "candats": [
+                    { "id": "1", "name": "Candat 1", "content": "Content for Candat 1" },
+                    { "id": "2", "name": "Candat 2", "content": "Content for Candat 2" }
+                ]
+            },
+            {
+                "id": "sub1",
+                "name": "Sub Category 1",
+                "parentId": "main1",
+                "candats": [
+                    { "id": "3", "name": "Sub Candat 1", "content": "Content for Sub Candat 1" }
+                ]
+            }
+        ],
+        "currentCategory": "main1"
+    }
+}
