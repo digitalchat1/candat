@@ -2,79 +2,17 @@
   "tags": {
     "categories": [
       {
-        "id": "sales",
-        "name": "Sales Tags",
-        "items": [
-          {
-            "id": "1",
-            "name": "Invoice Inquiry",
-            "content": "Invoice Inquiry [ADSL]"
-          },
-          {
-            "id": "2",
-            "name": "Early Renewal",
-            "content": "Early renewal [ADSL]"
-          }
-        ]
-      },
-      {
-        "id": "tech",
-        "name": "Tech Tags",
-        "items": [
-          {
-            "id": "3",
-            "name": "Physical Problem",
-            "content": "Physical Problem [T]"
-          },
-          {
-            "id": "4",
-            "name": "BLQ",
-            "content": "BLQ [T] [ADSL]"
-          }
-        ]
-      }
-    ],
-    "currentCategory": "sales"
-  },
-  "candat": {
-    "categories": [
-      {
-        "id": "main1",
-        "name": "Main Category 1",
-        "parentId": null,
-        "items": [
-          {
-            "id": "1",
-            "name": "Candat 1",
-            "content": "Content for Candat 1"
-          },
-          {
-            "id": "2",
-            "name": "Candat 2",
-            "content": "Content for Candat 2"
-          }
-        ]
-      },
-      {
-        "id": "sub1",
-        "name": "Sub Category 1",
-        "parentId": "main1",
-        "items": [
-          {
-            "id": "3",
-            "name": "Sub Candat 1",
-            "content": "Content for Sub Candat 1"
-          }
-        ]
-      },
-      {
-        "id": "jovfzmed7",
-        "name": "test",
+        "id": "vk7osl6mb",
+        "name": "1",
         "items": [],
         "parentId": null
       }
     ],
-    "currentCategory": "main1",
+    "currentCategory": "vk7osl6mb",
     "editingCategory": null
+  },
+  "candat": {
+    "categories": [],
+    "currentCategory": null
   }
 }
