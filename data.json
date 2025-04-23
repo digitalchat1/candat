@@ -99,6 +99,51 @@
             "id": "kxqnd4o6y",
             "name": "My WE Registration",
             "content": "My WE Registration [ADSL]"
+          },
+          {
+            "id": "ayi5de1ju",
+            "name": "Concession",
+            "content": "Concession [ADSL]"
+          },
+          {
+            "id": "p67ja0u1h",
+            "name": "Cancellation",
+            "content": "Cancellation [Data] [ADSL]"
+          },
+          {
+            "id": "pn4xtz5rf",
+            "name": "Transferred to Mobile",
+            "content": "Transferred to Mobile [ADSL]"
+          },
+          {
+            "id": "836f2k6mx",
+            "name": "Transferred To Voice",
+            "content": "Transferred To Voice [ADSL]"
+          },
+          {
+            "id": "6459bltqd",
+            "name": "My WE Recharge Quota",
+            "content": "My WE Recharge Quota [ADSL]"
+          },
+          {
+            "id": "xoq5vi6vv",
+            "name": "My WE Recharge Quota",
+            "content": "My WE Recharge Quota [ADSL]"
+          },
+          {
+            "id": "wilqxlh90",
+            "name": "Disabled matrix",
+            "content": "Disabled matrix [ADSL]"
+          },
+          {
+            "id": "fq5ruq3om",
+            "name": "New Subscription Created",
+            "content": "New Subscription Created [ADSL]"
+          },
+          {
+            "id": "4t7bickd5",
+            "name": "Complaint",
+            "content": "Complaint [ADSL]"
           }
         ],
         "parentId": null
@@ -127,8 +172,21 @@
     "editingItem": null
   },
   "candat": {
-    "categories": [],
-    "currentCategory": null,
+    "categories": [
+      {
+        "id": "3l08eg3pj",
+        "name": "Chatting & Idle",
+        "items": [
+          {
+            "id": "rr8r0i7mt",
+            "name": "Chatting & Idle",
+            "content": "\"اهلا بحضرتك اتمنالك يوم سعيد 😊\nاستفسار حضرتك علي رقم xxxx ؟ بخصوص xxxx ؟\""
+          }
+        ],
+        "parentId": null
+      }
+    ],
+    "currentCategory": "3l08eg3pj",
     "editingCategory": null,
     "editingItem": null
   }
