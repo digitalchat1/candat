@@ -42,7 +42,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Candat & Tags</title>
+    <title>نظام إدارة Tags و Candat</title>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -350,6 +350,26 @@
             justify-content: center;
         }
 
+        .tag-actions {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            display: flex;
+            gap: 5px;
+        }
+
+        .tag-actions button {
+            background: none;
+            border: none;
+            color: var(--secondary-color);
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .tag-actions button:hover {
+            color: var(--accent-color);
+        }
+
         @media (max-width: 768px) {
             .container {
                 grid-template-columns: 1fr;
@@ -370,7 +390,7 @@
 <body>
     <div class="container">
         <header>
-            <h1><i class="fas fa-tags"></i> Candat & Tags</h1>
+            <h1><i class="fas fa-tags"></i> نظام إدارة Tags و Candat</h1>
         </header>
 
         <div class="candat-sidebar">
@@ -399,7 +419,7 @@
             </div>
         </div>
 
-        <!-- نافذة كلمة المرور -->
+        <!-- Password Modal -->
         <div id="passwordModal" class="modal">
             <div class="modal-content">
                 <span class="close">×</span>
@@ -409,7 +429,7 @@
             </div>
         </div>
 
-        <!-- نافذة إضافة/تعديل قسم -->
+        <!-- Category Modal -->
         <div id="categoryModal" class="modal">
             <div class="modal-content">
                 <span class="close">×</span>
@@ -422,7 +442,7 @@
             </div>
         </div>
 
-        <!-- نافذة إضافة/تعديل Tag/Candat -->
+        <!-- Item Modal -->
         <div id="itemModal" class="modal">
             <div class="modal-content">
                 <span class="close">×</span>
@@ -434,10 +454,10 @@
             </div>
         </div>
 
-        <!-- إشعار -->
+        <!-- Notification -->
         <div id="notification" class="notification"></div>
 
-        <!-- لوحة تحكم -->
+        <!-- Control Panel -->
         <div id="controlPanel" class="control-panel">
             <button id="addCategory" class="btn"><i class="fas fa-folder-plus"></i> إضافة قسم</button>
             <button id="addItem" class="btn"><i class="fas fa-tag"></i> إضافة عنصر</button>
@@ -456,16 +476,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // بيانات التطبيق
-            let appData = { 
+            // Application state
+            let appData = {
                 tags: { categories: [], currentCategory: null, editingCategory: null, editingItem: null },
                 candat: { categories: [], currentCategory: null, editingCategory: null, editingItem: null }
             };
             let currentPanel = 'tags';
-            const defaultPassword = 'candat123';
+            const defaultPassword = 'admin123';
             let storedPassword = localStorage.getItem('controlPanelPassword') || defaultPassword;
 
-            // عناصر DOM
+            // DOM elements
             const elements = {
                 categoriesList: document.getElementById('categoriesList'),
                 candatCategoriesList: document.getElementById('candatCategoriesList'),
@@ -502,9 +522,8 @@
                 notification: document.getElementById('notification')
             };
 
-            // تهيئة التطبيق
+            // Initialize application
             async function initApp() {
-                console.log('Initializing application...');
                 await loadData();
                 setupEventListeners();
                 renderCategories();
@@ -512,122 +531,61 @@
                 renderItems();
             }
 
-            // تحميل البيانات
+            // Load data from data.json
             async function loadData() {
-                const maxRetries = 3;
-                let attempts = 0;
-
-                async function tryFetchData(path) {
-                    try {
-                        console.log(`Attempting to load ${path} (Attempt ${attempts + 1}/${maxRetries})...`);
-                        const response = await fetch(path, { cache: 'no-store' });
-                        if (!response.ok) {
-                            throw new Error(`HTTP error ${response.status}: ${response.statusText}`);
-                        }
-                        const jsonData = await response.json();
-                        console.log('Data loaded successfully:', jsonData);
-                        return jsonData;
-                    } catch (error) {
-                        console.error(`Failed to load ${path}:`, error.message);
-                        throw error;
-                    }
-                }
-
-                while (attempts < maxRetries) {
-                    attempts++;
-                    try {
-                        let jsonData;
-                        // جرب المسار الأساسي
-                        try {
-                            jsonData = await tryFetchData('data.json');
-                        } catch (error) {
-                            // لو فشل، جرب مسار بديل
-                            console.log('Trying alternative path ./data.json...');
-                            jsonData = await tryFetchData('./data.json');
-                        }
-
-                        // تحديث البيانات
-                        appData.tags = jsonData.tagsData || { categories: [], currentCategory: null };
-                        appData.candat = jsonData.candatData || { categories: [], currentCategory: null };
-                        if (appData.tags.categories.length > 0) appData.tags.currentCategory = appData.tags.categories[0].id;
-                        if (appData.candat.categories.length > 0) appData.candat.currentCategory = appData.candat.categories[0].id;
-                        showNotification('تم تحميل البيانات بنجاح');
-                        return; // خرج لو التحميل نجح
-                    } catch (error) {
-                        if (attempts === maxRetries) {
-                            console.error('All attempts to load data.json failed. Using default data.');
-                            let errorMessage = 'فشل تحميل data.json';
-                            if (error.message.includes('404')) {
-                                errorMessage = 'ملف data.json غير موجود';
-                            } else if (error.message.includes('NetworkError') || error.message.includes('Failed to fetch')) {
-                                errorMessage = 'مشكلة في الاتصال أو الخادم. تأكد من تشغيل الموقع على خادم';
-                            }
-                            showNotification(errorMessage);
-                            // استخدام البيانات الافتراضية
-                            appData = {
-                                tags: {
-                                    categories: [
-                                        { id: 'sales', name: 'Sales Tags', items: [
-                                            { id: '1', name: 'Invoice Inquiry', content: 'Invoice Inquiry [ADSL]' },
-                                            { id: '2', name: 'Early Renewal', content: 'Early renewal [ADSL]' }
-                                        ]},
-                                        { id: 'tech', name: 'Tech Tags', items: [
-                                            { id: '3', name: 'Physical Problem', content: 'Physical Problem [T]' },
-                                            { id: '4', name: 'BLQ', content: 'BLQ [T] [ADSL]' }
-                                        ]}
-                                    ],
-                                    currentCategory: 'sales'
-                                },
-                                candat: {
-                                    categories: [
-                                        { id: 'main1', name: 'Main Category 1', parentId: null, items: [
-                                            { id: '1', name: 'Candat 1', content: 'Content for Candat 1' },
-                                            { id: '2', name: 'Candat 2', content: 'Content for Candat 2' }
-                                        ]},
-                                        { id: 'sub1', name: 'Sub Category 1', parentId: 'main1', items: [
-                                            { id: '3', name: 'Sub Candat 1', content: 'Content for Sub Candat 1' }
-                                        ]}
-                                    ],
-                                    currentCategory: 'main1'
-                                }
-                            };
-                        } else {
-                            console.log(`Retrying after 1 second...`);
-                            await new Promise(resolve => setTimeout(resolve, 1000));
-                        }
-                    }
+                try {
+                    const response = await fetch('data.json', { cache: 'no-store' });
+                    if (!response.ok) throw new Error('فشل تحميل البيانات');
+                    const jsonData = await response.json();
+                    appData.tags = jsonData.tags || { categories: [], currentCategory: null };
+                    appData.candat = jsonData.candat || { categories: [], currentCategory: null };
+                    if (appData.tags.categories.length > 0) appData.tags.currentCategory = appData.tags.categories[0].id;
+                    if (appData.candat.categories.length > 0) appData.candat.currentCategory = appData.candat.categories[0].id;
+                    showNotification('تم تحميل البيانات بنجاح');
+                } catch (error) {
+                    showNotification('فشل تحميل البيانات، سيتم استخدام بيانات افتراضية');
+                    appData = {
+                        tags: { categories: [], currentCategory: null, editingCategory: null, editingItem: null },
+                        candat: { categories: [], currentCategory: null, editingCategory: null, editingItem: null }
+                    };
                 }
             }
 
-            // إعداد مستمعي الأحداث
-            function setupEventListeners() {
-                console.log('Setting up event listeners...');
+            // Save data to server (simulated)
+            async function saveData() {
+                try {
+                    const response = await fetch('save_data.php', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(appData)
+                    });
+                    if (!response.ok) throw new Error('فشل حفظ البيانات');
+                    showNotification('تم حفظ البيانات بنجاح');
+                } catch (error) {
+                    showNotification('فشل حفظ البيانات');
+                }
+            }
 
-                // فتح نافذة كلمة المرور
+            // Setup event listeners
+            function setupEventListeners() {
                 elements.controlPanelBtns.forEach(btn => {
                     btn.addEventListener('click', () => {
                         currentPanel = btn.dataset.panel;
                         elements.passwordModal.style.display = 'flex';
-                        elements.passwordInput.value = '';
                         elements.passwordInput.focus();
-                        console.log(`Opening password modal for ${currentPanel} panel`);
                     });
                 });
 
-                // تأكيد كلمة المرور
                 elements.confirmPassword.addEventListener('click', () => {
                     if (elements.passwordInput.value === storedPassword) {
                         elements.passwordModal.style.display = 'none';
-                        elements.controlPanel.style.display = 'flex';
                         elements.controlPanel.classList.add('show');
-                        console.log(`${currentPanel} control panel opened`);
                         showNotification(`تم فتح لوحة تحكم ${currentPanel === 'tags' ? 'Tags' : 'Candat'}`);
                     } else {
                         showNotification('كلمة المرور غير صحيحة');
                     }
                 });
 
-                // تغيير كلمة المرور
                 elements.changePassword.addEventListener('click', () => {
                     const newPassword = elements.newPassword.value.trim();
                     if (newPassword) {
@@ -640,15 +598,11 @@
                     }
                 });
 
-                // إغلاق لوحة التحكم
                 elements.closeControlPanel.addEventListener('click', () => {
                     elements.controlPanel.classList.remove('show');
-                    elements.controlPanel.style.display = 'none';
-                    console.log('Control panel closed');
                     showNotification('تم إغلاق لوحة التحكم');
                 });
 
-                // إضافة قسم
                 elements.addCategory.addEventListener('click', () => {
                     appData[currentPanel].editingCategory = null;
                     elements.modalCategoryTitle.textContent = 'إضافة قسم جديد';
@@ -657,7 +611,6 @@
                     elements.categoryModal.style.display = 'flex';
                 });
 
-                // إضافة عنصر
                 elements.addItem.addEventListener('click', () => {
                     if (!appData[currentPanel].currentCategory) {
                         showNotification('اختر قسمًا أولاً');
@@ -671,7 +624,6 @@
                     elements.itemModal.style.display = 'flex';
                 });
 
-                // تصدير/استيراد
                 elements.exportExcel.addEventListener('click', exportToExcel);
                 elements.importExcel.addEventListener('click', () => elements.excelFileInput.click());
                 elements.excelFileInput.addEventListener('change', importFromExcel);
@@ -679,11 +631,15 @@
                 elements.importJson.addEventListener('click', () => elements.jsonFileInput.click());
                 elements.jsonFileInput.addEventListener('change', importFromJson);
 
-                // حفظ
-                elements.saveCategory.addEventListener('click', saveCategory);
-                elements.saveItem.addEventListener('click', saveItem);
+                elements.saveCategory.addEventListener('click', async () => {
+                    await saveCategory();
+                    await saveData();
+                });
+                elements.saveItem.addEventListener('click', async () => {
+                    await saveItem();
+                    await saveData();
+                });
 
-                // البحث
                 elements.searchInput.addEventListener('input', () => {
                     currentPanel = 'tags';
                     renderItems(elements.searchInput.value.toLowerCase());
@@ -693,15 +649,14 @@
                     renderItems(elements.candatSearchInput.value.toLowerCase());
                 });
 
-                // إغلاق النوافذ
                 document.querySelectorAll('.close').forEach(closeBtn => {
                     closeBtn.addEventListener('click', () => closeBtn.closest('.modal').style.display = 'none');
                 });
+
                 window.addEventListener('click', (e) => {
                     if (e.target.classList.contains('modal')) e.target.style.display = 'none';
                 });
 
-                // حماية خفيفة
                 document.addEventListener('contextmenu', (e) => e.preventDefault());
                 document.addEventListener('keydown', (e) => {
                     if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) {
@@ -711,7 +666,7 @@
                 });
             }
 
-            // عرض الأقسام
+            // Render Tags categories
             function renderCategories() {
                 elements.categoriesList.innerHTML = '';
                 appData.tags.categories.forEach(category => {
@@ -743,7 +698,7 @@
                         updateParentCategoryDropdown();
                         elements.categoryModal.style.display = 'flex';
                     });
-                    li.querySelector('.delete').addEventListener('click', () => {
+                    li.querySelector('.delete').addEventListener('click', async () => {
                         if (!elements.controlPanel.classList.contains('show')) {
                             showNotification('افتح لوحة التحكم أولاً');
                             return;
@@ -755,6 +710,7 @@
                             }
                             renderCategories();
                             renderItems();
+                            await saveData();
                             showNotification('تم الحذف');
                         }
                     });
@@ -762,6 +718,7 @@
                 });
             }
 
+            // Render Candat categories
             function renderCandatCategories() {
                 elements.candatCategoriesList.innerHTML = '';
                 const mainCategories = appData.candat.categories.filter(c => !c.parentId);
@@ -794,7 +751,7 @@
                         updateParentCategoryDropdown(category.parentId);
                         elements.categoryModal.style.display = 'flex';
                     });
-                    li.querySelector('.delete').addEventListener('click', () => {
+                    li.querySelector('.delete').addEventListener('click', async () => {
                         if (!elements.controlPanel.classList.contains('show')) {
                             showNotification('افتح لوحة التحكم أولاً');
                             return;
@@ -806,6 +763,7 @@
                             }
                             renderCandatCategories();
                             renderItems();
+                            await saveData();
                             showNotification('تم الحذف');
                         }
                     });
@@ -841,7 +799,7 @@
                             updateParentCategoryDropdown(subCategory.parentId);
                             elements.categoryModal.style.display = 'flex';
                         });
-                        subLi.querySelector('.delete').addEventListener('click', () => {
+                        subLi.querySelector('.delete').addEventListener('click', async () => {
                             if (!elements.controlPanel.classList.contains('show')) {
                                 showNotification('افتح لوحة التحكم أولاً');
                                 return;
@@ -853,6 +811,7 @@
                                 }
                                 renderCandatCategories();
                                 renderItems();
+                                await saveData();
                                 showNotification('تم الحذف');
                             }
                         });
@@ -861,15 +820,15 @@
                 });
             }
 
-            // عرض العناصر
+            // Render items
             function renderItems(searchTerm = '') {
                 elements.tagsContainer.innerHTML = '';
                 const data = appData[currentPanel];
                 if (searchTerm) {
                     const filteredItems = [];
                     data.categories.forEach(category => {
-                        const matchingItems = category.items.filter(item => 
-                            item.name.toLowerCase().includes(searchTerm) || 
+                        const matchingItems = category.items.filter(item =>
+                            item.name.toLowerCase().includes(searchTerm) ||
                             item.content.toLowerCase().includes(searchTerm)
                         ).map(item => ({ ...item, categoryName: category.name }));
                         filteredItems.push(...matchingItems);
@@ -881,50 +840,7 @@
                     }
 
                     filteredItems.forEach(item => {
-                        const card = document.createElement('div');
-                        card.className = 'tag-card';
-                        card.innerHTML = `
-                            <div class="tag-actions">
-                                <button class="edit" data-id="${item.id}" data-category="${item.categoryName}"><i class="fas fa-edit"></i></button>
-                                <button class="delete" data-id="${item.id}" data-category="${item.categoryName}"><i class="fas fa-trash"></i></button>
-                            </div>
-                            <h3>${item.name} (${item.categoryName})</h3>
-                            <p>${item.content}</p>
-                        `;
-                        card.addEventListener('click', (e) => {
-                            if (!e.target.closest('.tag-actions')) {
-                                copyToClipboard(item.content);
-                                card.style.backgroundColor = 'rgba(138, 43, 226, 0.2)';
-                                setTimeout(() => card.style.backgroundColor = 'var(--card-bg)', 300);
-                            }
-                        });
-                        card.querySelector('.edit').addEventListener('click', () => {
-                            if (!elements.controlPanel.classList.contains('show')) {
-                                showNotification('افتح لوحة التحكم أولاً');
-                                return;
-                            }
-                            const category = data.categories.find(c => c.name === item.categoryName);
-                            const targetItem = category.items.find(i => i.id === item.id);
-                            data.editingItem = { categoryId: category.id, itemId: item.id };
-                            elements.modalItemTitle.textContent = `تحرير ${currentPanel === 'tags' ? 'Tag' : 'Candat'}`;
-                            elements.itemName.value = targetItem.name;
-                            elements.itemContent.value = targetItem.content;
-                            updateItemCategoryDropdown();
-                            elements.itemModal.style.display = 'flex';
-                        });
-                        card.querySelector('.delete').addEventListener('click', () => {
-                            if (!elements.controlPanel.classList.contains('show')) {
-                                showNotification('افتح لوحة التحكم أولاً');
-                                return;
-                            }
-                            const category = data.categories.find(c => c.name === item.categoryName);
-                            const targetItem = category.items.find(i => i.id === item.id);
-                            if (confirm(`هل تريد حذف "${targetItem.name}"؟`)) {
-                                category.items = category.items.filter(i => i.id !== item.id);
-                                renderItems(searchTerm);
-                                showNotification('تم الحذف');
-                            }
-                        });
+                        const card = createItemCard(item, item.categoryName);
                         elements.tagsContainer.appendChild(card);
                     });
                 } else {
@@ -934,56 +850,67 @@
                         return;
                     }
                     if (currentCategory.items.length === 0) {
-                        elements.tagsContainer.innerHTML = '<p style="text-align: center; grid-column: 1 / -1;">لا توجد عناصر</p>';
+                        elements.tagsContainer.innerHTML = '<p style Logos style="text-align: center; grid-column: 1 / -1;">لا توجد عناصر</p>';
                         return;
                     }
                     currentCategory.items.forEach(item => {
-                        const card = document.createElement('div');
-                        card.className = 'tag-card';
-                        card.innerHTML = `
-                            <div class="tag-actions">
-                                <button class="edit" data-id="${item.id}"><i class="fas fa-edit"></i></button>
-                                <button class="delete" data-id="${item.id}"><i class="fas fa-trash"></i></button>
-                            </div>
-                            <h3>${item.name}</h3>
-                            <p>${item.content}</p>
-                        `;
-                        card.addEventListener('click', (e) => {
-                            if (!e.target.closest('.tag-actions')) {
-                                copyToClipboard(item.content);
-                                card.style.backgroundColor = 'rgba(138, 43, 226, 0.2)';
-                                setTimeout(() => card.style.backgroundColor = 'var(--card-bg)', 300);
-                            }
-                        });
-                        card.querySelector('.edit').addEventListener('click', () => {
-                            if (!elements.controlPanel.classList.contains('show')) {
-                                showNotification('افتح لوحة التحكم أولاً');
-                                return;
-                            }
-                            data.editingItem = { categoryId: currentCategory.id, itemId: item.id };
-                            elements.modalItemTitle.textContent = `تحرير ${currentPanel === 'tags' ? 'Tag' : 'Candat'}`;
-                            elements.itemName.value = item.name;
-                            elements.itemContent.value = item.content;
-                            updateItemCategoryDropdown();
-                            elements.itemModal.style.display = 'flex';
-                        });
-                        card.querySelector('.delete').addEventListener('click', () => {
-                            if (!elements.controlPanel.classList.contains('show')) {
-                                showNotification('افتح لوحة التحكم أولاً');
-                                return;
-                            }
-                            if (confirm(`هل تريد حذف "${item.name}"؟`)) {
-                                currentCategory.items = currentCategory.items.filter(i => i.id !== item.id);
-                                renderItems();
-                                showNotification('تم الحذف');
-                            }
-                        });
+                        const card = createItemCard(item, currentCategory.name);
                         elements.tagsContainer.appendChild(card);
                     });
                 }
             }
 
-            // تحديث القوائم
+            // Create item card
+            function createItemCard(item, categoryName) {
+                const card = document.createElement('div');
+                card.className = 'tag-card';
+                card.innerHTML = `
+                    <div class="tag-actions">
+                        <button class="edit" data-id="${item.id}" data-category="${categoryName}"><i class="fas fa-edit"></i></button>
+                        <button class="delete" data-id="${item.id}" data-category="${categoryName}"><i class="fas fa-trash"></i></button>
+                    </div>
+                    <h3>${item.name} (${categoryName})</h3>
+                    <p>${item.content}</p>
+                `;
+                card.addEventListener('click', (e) => {
+                    if (!e.target.closest('.tag-actions')) {
+                        copyToClipboard(item.content);
+                        card.style.backgroundColor = 'rgba(138, 43, 226, 0.2)';
+                        setTimeout(() => card.style.backgroundColor = 'var(--card-bg)', 300);
+                    }
+                });
+                card.querySelector('.edit').addEventListener('click', () => {
+                    if (!elements.controlPanel.classList.contains('show')) {
+                        showNotification('افتح لوحة التحكم أولاً');
+                        return;
+                    }
+                    const category = appData[currentPanel].categories.find(c => c.name === categoryName);
+                    const targetItem = category.items.find(i => i.id === item.id);
+                    appData[currentPanel].editingItem = { categoryId: category.id, itemId: item.id };
+                    elements.modalItemTitle.textContent = `تحرير ${currentPanel === 'tags' ? 'Tag' : 'Candat'}`;
+                    elements.itemName.value = targetItem.name;
+                    elements.itemContent.value = targetItem.content;
+                    updateItemCategoryDropdown();
+                    elements.itemModal.style.display = 'flex';
+                });
+                card.querySelector('.delete').addEventListener('click', async () => {
+                    if (!elements.controlPanel.classList.contains('show')) {
+                        showNotification('افتح لوحة التحكم أولاً');
+                        return;
+                    }
+                    const category = appData[currentPanel].categories.find(c => c.name === categoryName);
+                    const targetItem = category.items.find(i => i.id === item.id);
+                    if (confirm(`هل تريد حذف "${targetItem.name}"؟`)) {
+                        category.items = category.items.filter(i => i.id !== item.id);
+                        renderItems();
+                        await saveData();
+                        showNotification('تم الحذف');
+                    }
+                });
+                return card;
+            }
+
+            // Update dropdowns
             function updateParentCategoryDropdown(selectedId = '') {
                 elements.parentCategory.innerHTML = '<option value="">لا يوجد قسم رئيسي</option>';
                 if (currentPanel === 'candat') {
@@ -1015,8 +942,8 @@
                 });
             }
 
-            // حفظ البيانات
-            function saveCategory() {
+            // Save category
+            async function saveCategory() {
                 const name = elements.categoryName.value.trim();
                 const parentId = currentPanel === 'candat' ? elements.parentCategory.value || null : null;
                 if (!name) {
@@ -1040,7 +967,8 @@
                 showNotification('تم الحفظ');
             }
 
-            function saveItem() {
+            // Save item
+            async function saveItem() {
                 const name = elements.itemName.value.trim();
                 const content = elements.itemContent.value.trim();
                 const categoryId = elements.itemCategory.value;
@@ -1068,9 +996,9 @@
                 showNotification('تم الحفظ');
             }
 
-            // تصدير/استيراد
+            // Export to Excel
             function exportToExcel() {
-                const data = appData[currentPanel].categories.map(category => 
+                const data = appData[currentPanel].categories.map(category =>
                     category.items.map(item => ({
                         Category: category.name,
                         Name: item.name,
@@ -1083,10 +1011,11 @@
                 XLSX.writeFile(wb, `${currentPanel}_export.xlsx`);
             }
 
+            // Import from Excel
             function importFromExcel(event) {
                 const file = event.target.files[0];
                 const reader = new FileReader();
-                reader.onload = (e) => {
+                reader.onload = async (e) => {
                     const data = new Uint8Array(e.target.result);
                     const workbook = XLSX.read(data, { type: 'array' });
                     const sheet = workbook.Sheets[workbook.SheetNames[0]];
@@ -1110,11 +1039,13 @@
                     renderCategories();
                     renderCandatCategories();
                     renderItems();
+                    await saveData();
                     showNotification('تم الاستيراد');
                 };
                 reader.readAsArrayBuffer(file);
             }
 
+            // Export to JSON
             function exportToJson() {
                 const data = JSON.stringify(appData, null, 2);
                 const blob = new Blob([data], { type: 'application/json' });
@@ -1126,10 +1057,11 @@
                 URL.revokeObjectURL(url);
             }
 
+            // Import from JSON
             function importFromJson(event) {
                 const file = event.target.files[0];
                 const reader = new FileReader();
-                reader.onload = (e) => {
+                reader.onload = async (e) => {
                     try {
                         const jsonData = JSON.parse(e.target.result);
                         appData = jsonData;
@@ -1138,6 +1070,7 @@
                         renderCategories();
                         renderCandatCategories();
                         renderItems();
+                        await saveData();
                         showNotification('تم الاستيراد');
                     } catch (error) {
                         showNotification('ملف JSON غير صالح');
@@ -1146,7 +1079,7 @@
                 reader.readAsText(file);
             }
 
-            // دوال مساعدة
+            // Helper functions
             function generateId() {
                 return Math.random().toString(36).substr(2, 9);
             }
@@ -1165,7 +1098,7 @@
                 setTimeout(() => elements.notification.classList.remove('show'), 3000);
             }
 
-            // تشغيل التطبيق
+            // Start the application
             initApp();
         });
     </script>
