@@ -895,11 +895,147 @@
       {
         "id": "9nyzbar0b",
         "name": "WE Gold Tags",
-        "items": [],
+        "items": [
+          {
+            "id": "ki1pa9lg3",
+            "name": "BLQ",
+            "content": "WE Gold Tech , Data Down {GSM}"
+          },
+          {
+            "id": "zti9uwte5",
+            "name": "Data down",
+            "content": "WE Gold Tech , Data Down {GSM}"
+          },
+          {
+            "id": "0ccexhb4t",
+            "name": "Logical instability",
+            "content": "WE Gold Tech , Logical instability {GSM}"
+          },
+          {
+            "id": "z8kh3vutj",
+            "name": "WE Gold Tech , Need OP",
+            "content": "WE Gold Tech , Need OP {GSM}"
+          },
+          {
+            "id": "iaxj9w8nl",
+            "name": "WE Gold Tech , physical instability",
+            "content": "WE Gold Tech , physical instability {GSM}"
+          },
+          {
+            "id": "kpi7pm7se",
+            "name": "WE Gold Tech , Slowness",
+            "content": "WE Gold Tech , Slowness {GSM}"
+          },
+          {
+            "id": "lnpomz552",
+            "name": "WE Gold Tech , Unable to obtain IP",
+            "content": "WE Gold Tech , Unable to obtain IP [T] {GSM}"
+          },
+          {
+            "id": "ulzu6j0ww",
+            "name": "WE Gold Tech , Voice & Data Down",
+            "content": "WE Gold Tech , Voice & Data Down {GSM}"
+          },
+          {
+            "id": "dzlrk46sc",
+            "name": "WE Gold Tech , Voice Down",
+            "content": "WE Gold Tech , Voice Down {GSM}"
+          },
+          {
+            "id": "9u0g2hwnv",
+            "name": "WE Gold Tech , Wireless [Problem - Settings]",
+            "content": "WE Gold Tech , Wireless [Problem - Settings] {GSM}"
+          },
+          {
+            "id": "cp5rjhs5h",
+            "name": "في حاله استياء العميل من نظام وي جولد بشكل عام",
+            "content": "Not Satisfied From { WE Gold } {GSM}"
+          },
+          {
+            "id": "vuf1y7l21",
+            "name": "في حاله أي طلب خاص بنظام العائلة وي جولد سواء اضافه او حذف او استهلاك أعضاء المجموعة",
+            "content": "WE Gold Family ( Add & remove & Usage ) member {GSM}"
+          },
+          {
+            "id": "c9bww4zkb",
+            "name": "في حاله سؤال العميل عن الفاتورة ولم يتم إصدارها علي السيستم",
+            "content": "WE Gold Unbilled amount {GSM}"
+          },
+          {
+            "id": "5gtqtl8ux",
+            "name": "في حاله سؤال العميل عن اولويه الاستهلاك",
+            "content": "WE Gold Usage and Consumption Priority {GSM}"
+          },
+          {
+            "id": "gh01lzck5",
+            "name": "WE Gold packages inq {GSM}",
+            "content": "في حاله سؤال العميل عن باقات وي جولد او تفاصيلها"
+          },
+          {
+            "id": "wx820qiqf",
+            "name": "في حاله سؤال العميل عن باقة الانترنت خارج مصر المجانية من وي جولد",
+            "content": "We Gold Roaming Free Package {GSM}"
+          },
+          {
+            "id": "je91gyusj",
+            "name": "في حاله سؤال العميل عن تفاصيل الفاتورة",
+            "content": "WE Gold Bill explanation {GSM}"
+          },
+          {
+            "id": "orl0ma5jd",
+            "name": "في حاله سؤال العميل عن تفاصيل خطه او ميعاد التجديد",
+            "content": "We Gold Line info & renewal Details {GSM}"
+          },
+          {
+            "id": "vy5u71jgb",
+            "name": "في حاله سؤال العميل عن عرض MNP لباقات we gold",
+            "content": "MNP Port IN WE Gold Offer 50% {GSM}"
+          },
+          {
+            "id": "fkr7pyroo",
+            "name": "في حاله سؤال العميل عن عرض خصم NTRA",
+            "content": "WE Gold NTRA Staff Offer 50% discount {GSM}"
+          },
+          {
+            "id": "dxwh147j3",
+            "name": "في حاله سؤال العميل عن عرض خصم الموظفين",
+            "content": "WE Gold Employee Offer 50 Discount {GSM}"
+          },
+          {
+            "id": "zja2cishm",
+            "name": "في حاله سؤال العميل عن عرض فيزيتا",
+            "content": "Vezeeta Voucher WE Gold 2025 {GSM}"
+          },
+          {
+            "id": "k5pw7u20o",
+            "name": "في حاله سؤال العميل عن نظام تقسيط الأجهزة الخاص ب وي جولد",
+            "content": "WE Gold Devices Installment {GSM}"
+          },
+          {
+            "id": "vi9ahqok3",
+            "name": "في حاله طلب  او سؤال العميل عن تغيير باقة ال انترنت فقط",
+            "content": "WE Gold Change ADSL package {GSM}"
+          },
+          {
+            "id": "4xybz9nz3",
+            "name": "في حاله طلب العميل الغاء باقة تم الاشتراك عليها بالخطأ وطلب التعويض",
+            "content": "We Gold Service activated by mistake {GSM}"
+          },
+          {
+            "id": "wa7x2vwyw",
+            "name": "في حاله طلب او سؤال العميل عن تعويض عن مشكله فنيه",
+            "content": "We Gold ADSL Tech Concession {GSM}"
+          },
+          {
+            "id": "jkpo5qyo4",
+            "name": "في حاله طلب او سؤال العميل عن تغيير باقة وي جولد الأساسية",
+            "content": "WE Gold Change Main package {GSM}"
+          }
+        ],
         "parentId": null
       }
     ],
-    "currentCategory": "u9rau31ai",
+    "currentCategory": "9nyzbar0b",
     "editingCategory": null,
     "editingItem": null
   },
