@@ -56,7 +56,7 @@
             --bg-color: #1a1a1a;
             --card-bg: #2a2a2a;
             --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-            --neon-effect: 0 0 10px rgba(138, 43, 226, 0.8);
+            --fire-effect: 0 0 10px rgba(255, 69, 0, 0.8), 0 0 20px rgba(255, 165, 0, 0.6);
         }
 
         * {
@@ -104,7 +104,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: var(--neon-effect);
+            box-shadow: var(--fire-effect);
             border-bottom: 2px solid var(--secondary-color);
         }
 
@@ -138,7 +138,7 @@
         .btn:hover {
             background-color: #9932cc;
             transform: translateY(-2px);
-            box-shadow: var(--neon-effect);
+            box-shadow: var(--fire-effect);
         }
 
         .tooltip {
@@ -269,7 +269,7 @@
 
         .control-panel-btn:hover {
             background-color: #c2185b;
-            box-shadow: var(--neon-effect);
+            box-shadow: var(--fire-effect);
         }
 
         main {
@@ -296,7 +296,7 @@
 
         .tag-card:hover, .candat-card:hover {
             transform: translateY(-5px);
-            box-shadow: var(--neon-effect);
+            box-shadow: var(--fire-effect);
         }
 
         .tag-card h3, .candat-card h3 {
@@ -332,7 +332,7 @@
             max-width: 500px;
             position: relative;
             border: 1px solid var(--secondary-color);
-            box-shadow: var(--neon-effect);
+            box-shadow: var(--fire-effect);
         }
 
         .modal-content h2 {
@@ -419,7 +419,7 @@
         }
 
         .control-panel.show, .mota-control-panel.show {
-            display: flex;
+            display: flex !important;
         }
 
         .control-panel .btn, .mota-control-panel .btn {
@@ -480,7 +480,7 @@
         <header>
             <h1><i class="fas fa-tags"></i> Candat & Tags</h1>
             <div class="actions">
-                <!-- أزرار الإدارة تم نقلها إلى لوحة التحكم -->
+                <!-- أزرار الإدارة في لوحة التحكم -->
             </div>
         </header>
 
@@ -490,12 +490,10 @@
                     <input type="text" id="candatSearchInput" placeholder="ابحث عن Candat...">
                     <i class="fas fa-search"></i>
                 </div>
-                <ul id="candatCategoriesList" class="candat-categories-list">
-                    <!-- سيتم ملؤها بالجافاسكريبت -->
-                </ul>
+                <ul id="candatCategoriesList" class="candat-categories-list"></ul>
             </div>
             <div class="tooltip">
-                <div id="motaControlPanelBtn" class="control-panel-btn">
+                <div id="motaControlPanelBtn" class="control-panel-btn" data-panel="candat">
                     <i class="fas fa-cog"></i> لوحة تحكم Candat
                 </div>
                 <span class="tooltiptext">فتح لوحة تحكم Candat</span>
@@ -503,9 +501,7 @@
         </div>
 
         <main>
-            <div id="tagsContainer" class="tags-container">
-                <!-- سيتم ملؤها بالجافاسكريبت -->
-            </div>
+            <div id="tagsContainer" class="tags-container"></div>
         </main>
 
         <div class="sidebar">
@@ -514,19 +510,17 @@
                     <input type="text" id="searchInput" placeholder="ابحث عن Tags...">
                     <i class="fas fa-search"></i>
                 </div>
-                <ul id="categoriesList" class="categories-list">
-                    <!-- سيتم ملؤها بالجافاسكريبت -->
-                </ul>
+                <ul id="categoriesList" class="categories-list"></ul>
             </div>
             <div class="tooltip">
-                <div id="controlPanelBtn" class="control-panel-btn">
+                <div id="controlPanelBtn" class="control-panel-btn" data-panel="tags">
                     <i class="fas fa-cog"></i> لوحة تحكم Tags
                 </div>
                 <span class="tooltiptext">فتح لوحة تحكم Tags</span>
             </div>
         </div>
 
-        <!-- نافذة إدخال كلمة المرور -->
+        <!-- نافذة كلمة المرور -->
         <div id="passwordModal" class="modal">
             <div class="modal-content">
                 <span class="close">×</span>
@@ -553,8 +547,7 @@
                 <h2 id="candatModalCategoryTitle">إضافة قسم جديد</h2>
                 <input type="text" id="candatCategoryName" placeholder="اسم القسم">
                 <select id="parentCategory">
-                    <option value="">لا يوجد قسم رئيسي (قسم رئيسي)</option>
-                    <!-- سيتم ملؤها بالجافاسكريبت -->
+                    <option value="">لا يوجد قسم رئيسي</option>
                 </select>
                 <button id="saveCandatCategory" class="btn">حفظ</button>
             </div>
@@ -565,9 +558,7 @@
             <div class="modal-content">
                 <span class="close">×</span>
                 <h2 id="modalTagTitle">إضافة Tag جديد</h2>
-                <select id="tagCategory">
-                    <!-- سيتم ملؤها بالجافاسكريبت -->
-                </select>
+                <select id="tagCategory"></select>
                 <input type="text" id="tagName" placeholder="اسم الـ Tag">
                 <textarea id="tagContent" placeholder="محتوى الـ Tag"></textarea>
                 <button id="saveTag" class="btn">حفظ</button>
@@ -579,17 +570,15 @@
             <div class="modal-content">
                 <span class="close">×</span>
                 <h2 id="candatModalTitle">إضافة Candat جديد</h2>
-                <select id="candatCategory">
-                    <!-- سيتم ملؤها بالجافاسكريبت -->
-                </select>
+                <select id="candatCategory"></select>
                 <input type="text" id="candatName" placeholder="اسم الـ Candat">
                 <textarea id="candatContent" placeholder="محتوى الـ Candat"></textarea>
                 <button id="saveCandat" class="btn">حفظ</button>
             </div>
         </div>
 
-        <!-- إشعار النسخ -->
-        <div id="notification" class="notification">تم النسخ بنجاح!</div>
+        <!-- إشعار -->
+        <div id="notification" class="notification"></div>
 
         <!-- لوحة تحكم Tags -->
         <div id="controlPanel" class="control-panel">
@@ -598,6 +587,9 @@
             <button id="exportBtnPanel" class="btn"><i class="fas fa-file-export"></i> تصدير Excel</button>
             <button id="importBtnPanel" class="btn"><i class="fas fa-file-import"></i> استيراد Excel</button>
             <input type="file" id="fileInput" accept=".xlsx,.csv" style="display: none;">
+            <button id="exportJsonBtnPanel" class="btn"><i class="fas fa-file-download"></i> تصدير data.json</button>
+            <button id="importJsonBtnPanel" class="btn"><i class="fas fa-file-upload"></i> استيراد data.json</button>
+            <input type="file" id="jsonFileInput" accept=".json" style="display: none;">
             <input type="password" id="newPassword" placeholder="تغيير كلمة المرور">
             <button id="changePassword" class="btn"><i class="fas fa-key"></i> حفظ كلمة المرور</button>
             <button id="closeControlPanel" class="btn"><i class="fas fa-times"></i> إغلاق</button>
@@ -610,65 +602,19 @@
             <button id="exportCandatBtnPanel" class="btn"><i class="fas fa-file-export"></i> تصدير Excel</button>
             <button id="importCandatBtnPanel" class="btn"><i class="fas fa-file-import"></i> استيراد Excel</button>
             <input type="file" id="candatFileInput" accept=".xlsx,.csv" style="display: none;">
+            <button id="exportCandatJsonBtnPanel" class="btn"><i class="fas fa-file-download"></i> تصدير data.json</button>
+            <button id="importCandatJsonBtnPanel" class="btn"><i class="fas fa-file-upload"></i> استيراد data.json</button>
+            <input type="file" id="candatJsonFileInput" accept=".json" style="display: none;">
             <button id="motaCloseControlPanel" class="btn"><i class="fas fa-times"></i> إغلاق</button>
         </div>
     </div>
 
-    <script type="text/javascript">
-        var gk_isXlsx = false;
-        var gk_xlsxFileLookup = {};
-        var gk_fileData = {};
-        function filledCell(cell) {
-            return cell !== '' && cell != null;
-        }
-        function loadFileData(filename) {
-            if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-                try {
-                    var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-                    var firstSheetName = workbook.SheetNames[0];
-                    var worksheet = workbook.Sheets[firstSheetName];
-
-                    var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-                    var filteredData = jsonData.filter(row => row.some(filledCell));
-
-                    var headerRowIndex = filteredData.findIndex((row, index) =>
-                        row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-                    );
-                    if (headerRowIndex === -1 || headerRowIndex > 25) {
-                        headerRowIndex = 0;
-                    }
-
-                    var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex));
-                    csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-                    return csv;
-                } catch (e) {
-                    console.error(e);
-                    return "";
-                }
-            }
-            return gk_fileData[filename] || "";
-        }
-    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // بيانات التطبيق لـ Tags
-            let appData = {
-                categories: [],
-                currentCategory: null,
-                editingCategory: null,
-                editingTag: null
-            };
-
-            // بيانات التطبيق لـ Candat
-            let candatData = {
-                categories: [],
-                currentCategory: null,
-                editingCategory: null,
-                editingCandat: null
-            };
-
-            // كلمة المرور الافتراضية
+            // بيانات التطبيق
+            let appData = { categories: [], currentCategory: null, editingCategory: null, editingTag: null };
+            let candatData = { categories: [], currentCategory: null, editingCategory: null, editingCandat: null };
             const defaultPassword = 'candat123';
             let storedPassword = localStorage.getItem('controlPanelPassword') || defaultPassword;
 
@@ -684,6 +630,9 @@
                 exportBtnPanel: document.getElementById('exportBtnPanel'),
                 importBtnPanel: document.getElementById('importBtnPanel'),
                 fileInput: document.getElementById('fileInput'),
+                exportJsonBtnPanel: document.getElementById('exportJsonBtnPanel'),
+                importJsonBtnPanel: document.getElementById('importJsonBtnPanel'),
+                jsonFileInput: document.getElementById('jsonFileInput'),
                 categoryModal: document.getElementById('categoryModal'),
                 tagModal: document.getElementById('tagModal'),
                 passwordModal: document.getElementById('passwordModal'),
@@ -701,9 +650,7 @@
                 changePassword: document.getElementById('changePassword'),
                 closeControlPanel: document.getElementById('closeControlPanel'),
                 notification: document.getElementById('notification'),
-                // عناصر Candat
                 candatCategoriesList: document.getElementById('candatCategoriesList'),
-                candatContainer: document.getElementById('tagsContainer'),
                 candatSearchInput: document.getElementById('candatSearchInput'),
                 motaControlPanelBtn: document.getElementById('motaControlPanelBtn'),
                 motaControlPanel: document.getElementById('motaControlPanel'),
@@ -712,6 +659,9 @@
                 exportCandatBtnPanel: document.getElementById('exportCandatBtnPanel'),
                 importCandatBtnPanel: document.getElementById('importCandatBtnPanel'),
                 candatFileInput: document.getElementById('candatFileInput'),
+                exportCandatJsonBtnPanel: document.getElementById('exportCandatJsonBtnPanel'),
+                importCandatJsonBtnPanel: document.getElementById('importCandatJsonBtnPanel'),
+                candatJsonFileInput: document.getElementById('candatJsonFileInput'),
                 candatCategoryModal: document.getElementById('candatCategoryModal'),
                 candatModal: document.getElementById('candatModal'),
                 candatModalCategoryTitle: document.getElementById('candatModalCategoryTitle'),
@@ -726,8 +676,20 @@
                 motaCloseControlPanel: document.getElementById('motaCloseControlPanel')
             };
 
+            // التحقق من وجود عناصر DOM
+            function checkDOMElements() {
+                for (const [key, element] of Object.entries(elements)) {
+                    if (!element) {
+                        console.error(`DOM element not found: ${key}`);
+                        showNotification(`خطأ: عنصر ${key} غير موجود في الصفحة`);
+                    }
+                }
+            }
+
             // تهيئة التطبيق
             function initApp() {
+                console.log('Initializing application...');
+                checkDOMElements();
                 loadData();
                 loadCandatData();
                 setupEventListeners();
@@ -738,148 +700,163 @@
             // تحميل بيانات Tags
             async function loadData() {
                 try {
-                    const savedData = localStorage.getItem('tagsData');
-                    if (savedData) {
-                        appData = JSON.parse(savedData);
-                        if (appData.categories.length > 0) {
-                            appData.currentCategory = appData.categories[0].id;
-                        }
-                    } else {
-                        const response = await fetch('data.json');
-                        if (!response.ok) throw new Error('Failed to fetch data.json');
-                        const jsonData = await response.json();
-                        appData = jsonData.tagsData;
-                        if (appData.categories.length > 0) {
-                            appData.currentCategory = appData.categories[0].id;
-                        }
-                        saveData();
+                    console.log('Attempting to load data.json for Tags...');
+                    const response = await fetch('data.json', {
+                        cache: 'no-store' // تجنب التخزين المؤقت
+                    });
+                    if (!response.ok) {
+                        throw new Error(`Failed to fetch data.json: ${response.status} ${response.statusText}`);
                     }
+                    const jsonData = await response.json();
+                    if (!jsonData.tagsData) {
+                        throw new Error('Invalid data.json: tagsData not found');
+                    }
+                    appData = jsonData.tagsData;
+                    if (appData.categories.length > 0) {
+                        appData.currentCategory = appData.categories[0].id;
+                    }
+                    saveData();
+                    console.log('data.json loaded successfully for Tags:', appData);
+                    showNotification('تم تحميل بيانات Tags بنجاح');
                 } catch (error) {
-                    console.error('Error loading tags data:', error);
-                    // تحميل بيانات افتراضية في حالة فشل جلب الملف
+                    console.error('Error loading tags data:', error.message);
+                    showNotification(`فشل تحميل data.json لـ Tags: ${error.message}`);
+                    // استخدام البيانات الافتراضية
                     appData = {
                         categories: [
-                            {
-                                id: 'sales',
-                                name: 'Sales Tags',
-                                tags: [
-                                    { id: '1', name: 'Invoice Inquiry', content: 'Invoice Inquiry [ADSL]' },
-                                    { id: '2', name: 'Early renewal', content: 'Early renewal [ADSL]' }
-                                ]
-                            },
-                            {
-                                id: 'tech',
-                                name: 'Tech Tags',
-                                tags: [
-                                    { id: '3', name: 'Physical Problem', content: 'Physical Problem [T]' },
-                                    { id: '4', name: 'BLQ', content: 'BLQ [T] [ADSL]' }
-                                ]
-                            },
-                            {
-                                id: 'voice',
-                                name: 'Voice Tags',
-                                tags: [
-                                    { id: '5', name: 'FCC New Ticket', content: 'FCC New Ticket { Voice }' },
-                                    { id: '6', name: 'FCC Within SLA', content: 'FCC Within SLA { Voice }' }
-                                ]
-                            }
+                            { id: 'sales', name: 'Sales Tags', tags: [
+                                { id: '1', name: 'Invoice Inquiry', content: 'Invoice Inquiry [ADSL]' },
+                                { id: '2', name: 'Early renewal', content: 'Early renewal [ADSL]' }
+                            ]},
+                            { id: 'tech', name: 'Tech Tags', tags: [
+                                { id: '3', name: 'Physical Problem', content: 'Physical Problem [T]' },
+                                { id: '4', name: 'BLQ', content: 'BLQ [T] [ADSL]' }
+                            ]}
                         ],
                         currentCategory: 'sales'
                     };
                     saveData();
+                    console.log('Loaded default Tags data:', appData);
+                    showNotification('تم تحميل بيانات Tags الافتراضية');
                 }
             }
 
             // تحميل بيانات Candat
             async function loadCandatData() {
                 try {
-                    const savedData = localStorage.getItem('candatData');
-                    if (savedData) {
-                        candatData = JSON.parse(savedData);
-                        if (candatData.categories.length > 0) {
-                            candatData.currentCategory = candatData.categories[0].id;
-                        }
-                    } else {
-                        const response = await fetch('data.json');
-                        if (!response.ok) throw new Error('Failed to fetch data.json');
-                        const jsonData = await response.json();
-                        candatData = jsonData.candatData;
-                        if (candatData.categories.length > 0) {
-                            candatData.currentCategory = candatData.categories[0].id;
-                        }
-                        saveCandatData();
+                    console.log('Attempting to load data.json for Candat...');
+                    const response = await fetch('data.json', {
+                        cache: 'no-store' // تجنب التخزين المؤقت
+                    });
+                    if (!response.ok) {
+                        throw new Error(`Failed to fetch data.json: ${response.status} ${response.statusText}`);
                     }
+                    const jsonData = await response.json();
+                    if (!jsonData.candatData) {
+                        throw new Error('Invalid data.json: candatData not found');
+                    }
+                    candatData = jsonData.candatData;
+                    if (candatData.categories.length > 0) {
+                        candatData.currentCategory = candatData.categories[0].id;
+                    }
+                    saveCandatData();
+                    console.log('data.json loaded successfully for Candat:', candatData);
+                    showNotification('تم تحميل بيانات Candat بنجاح');
                 } catch (error) {
-                    console.error('Error loading candat data:', error);
-                    // تحميل بيانات افتراضية في حالة فشل جلب الملف
+                    console.error('Error loading candat data:', error.message);
+                    showNotification(`فشل تحميل data.json لـ Candat: ${error.message}`);
+                    // استخدام البيانات الافتراضية
                     candatData = {
                         categories: [
-                            {
-                                id: 'main1',
-                                name: 'Main Category 1',
-                                parentId: null,
-                                candats: [
-                                    { id: '1', name: 'Candat 1', content: 'Content for Candat 1' },
-                                    { id: '2', name: 'Candat 2', content: 'Content for Candat 2' }
-                                ]
-                            },
-                            {
-                                id: 'sub1',
-                                name: 'Sub Category 1',
-                                parentId: 'main1',
-                                candats: [
-                                    { id: '3', name: 'Sub Candat 1', content: 'Content for Sub Candat 1' }
-                                ]
-                            }
+                            { id: 'main1', name: 'Main Category 1', parentId: null, candats: [
+                                { id: '1', name: 'Candat 1', content: 'Content for Candat 1' },
+                                { id: '2', name: 'Candat 2', content: 'Content for Candat 2' }
+                            ]},
+                            { id: 'sub1', name: 'Sub Category 1', parentId: 'main1', candats: [
+                                { id: '3', name: 'Sub Candat 1', content: 'Content for Sub Candat 1' }
+                            ]}
                         ],
                         currentCategory: 'main1'
                     };
                     saveCandatData();
+                    console.log('Loaded default Candat data:', candatData);
+                    showNotification('تم تحميل بيانات Candat الافتراضية');
                 }
             }
 
-            // حفظ بيانات Tags
+            // حفظ البيانات
             function saveData() {
                 localStorage.setItem('tagsData', JSON.stringify(appData));
             }
 
-            // حفظ بيانات Candat
             function saveCandatData() {
                 localStorage.setItem('candatData', JSON.stringify(candatData));
             }
 
             // إعداد مستمعي الأحداث
             function setupEventListeners() {
-                // فتح نافذة كلمة المرور لـ Tags
-                elements.controlPanelBtn.addEventListener('click', () => {
-                    elements.passwordModal.style.display = 'flex';
-                    elements.passwordInput.value = '';
-                    elements.passwordInput.focus();
-                    elements.confirmPassword.dataset.panel = 'tags';
-                });
+                console.log('Setting up event listeners...');
 
-                // فتح نافذة كلمة المرور لـ Candat
-                elements.motaControlPanelBtn.addEventListener('click', () => {
-                    elements.passwordModal.style.display = 'flex';
-                    elements.passwordInput.value = '';
-                    elements.passwordInput.focus();
-                    elements.confirmPassword.dataset.panel = 'candat';
+                // التحقق من وجود أزرار لوحة التحكم
+                if (!elements.controlPanelBtn || !elements.motaControlPanelBtn) {
+                    console.error('Control panel buttons not found');
+                    showNotification('خطأ: أزرار لوحة التحكم غير موجودة');
+                    return;
+                }
+
+                // فتح نافذة كلمة المرور
+                [elements.controlPanelBtn, elements.motaControlPanelBtn].forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const panel = e.target.closest('.control-panel-btn').dataset.panel;
+                        console.log(`Control Panel Button Clicked: ${panel}`);
+                        if (!elements.passwordModal) {
+                            console.error('Password modal not found');
+                            showNotification('خطأ: نافذة كلمة المرور غير موجودة');
+                            return;
+                        }
+                        elements.passwordModal.style.display = 'flex';
+                        elements.passwordInput.value = '';
+                        elements.passwordInput.focus();
+                        elements.confirmPassword.dataset.panel = panel;
+                    });
                 });
 
                 // تأكيد كلمة المرور
                 elements.confirmPassword.addEventListener('click', () => {
                     const inputPassword = elements.passwordInput.value;
+                    console.log('Confirm Password Clicked. Input:', inputPassword, 'Stored:', storedPassword);
+                    if (!inputPassword) {
+                        showNotification('الرجاء إدخال كلمة المرور');
+                        return;
+                    }
                     if (inputPassword === storedPassword) {
+                        console.log('Password Correct. Opening Panel:', elements.confirmPassword.dataset.panel);
                         elements.passwordModal.style.display = 'none';
-                        const panel = elements.confirmPassword.dataset.panel;
-                        if (panel === 'tags') {
+                        if (elements.confirmPassword.dataset.panel === 'tags') {
+                            if (!elements.controlPanel) {
+                                console.error('Tags control panel not found');
+                                showNotification('خطأ: لوحة تحكم Tags غير موجودة');
+                                return;
+                            }
+                            elements.controlPanel.style.display = 'flex';
                             elements.controlPanel.classList.add('show');
                             elements.motaControlPanel.classList.remove('show');
-                        } else if (panel === 'candat') {
+                            console.log('Tags Control Panel Opened');
+                            showNotification('تم فتح لوحة تحكم Tags');
+                        } else if (elements.confirmPassword.dataset.panel === 'candat') {
+                            if (!elements.motaControlPanel) {
+                                console.error('Candat control panel not found');
+                                showNotification('خطأ: لوحة تحكم Candat غير موجودة');
+                                return;
+                            }
+                            elements.motaControlPanel.style.display = 'flex';
                             elements.motaControlPanel.classList.add('show');
                             elements.controlPanel.classList.remove('show');
+                            console.log('Candat Control Panel Opened');
+                            showNotification('تم فتح لوحة تحكم Candat');
                         }
                     } else {
+                        console.log('Password Incorrect');
                         showNotification('كلمة المرور غير صحيحة');
                     }
                 });
@@ -897,17 +874,22 @@
                     }
                 });
 
-                // إغلاق لوحة التحكم لـ Tags
+                // إغلاق لوحة التحكم
                 elements.closeControlPanel.addEventListener('click', () => {
                     elements.controlPanel.classList.remove('show');
+                    elements.controlPanel.style.display = 'none';
+                    console.log('Tags Control Panel Closed');
+                    showNotification('تم إغلاق لوحة تحكم Tags');
                 });
 
-                // إغلاق لوحة التحكم لـ Candat
                 elements.motaCloseControlPanel.addEventListener('click', () => {
                     elements.motaControlPanel.classList.remove('show');
+                    elements.motaControlPanel.style.display = 'none';
+                    console.log('Candat Control Panel Closed');
+                    showNotification('تم إغلاق لوحة تحكم Candat');
                 });
 
-                // إضافة قسم جديد لـ Tags
+                // إضافة قسم جديد
                 elements.addCategoryPanel.addEventListener('click', () => {
                     appData.editingCategory = null;
                     elements.modalCategoryTitle.textContent = 'إضافة قسم جديد';
@@ -915,7 +897,6 @@
                     elements.categoryModal.style.display = 'flex';
                 });
 
-                // إضافة قسم جديد لـ Candat
                 elements.addCandatCategoryPanel.addEventListener('click', () => {
                     candatData.editingCategory = null;
                     elements.candatModalCategoryTitle.textContent = 'إضافة قسم جديد';
@@ -924,7 +905,7 @@
                     elements.candatCategoryModal.style.display = 'flex';
                 });
 
-                // إضافة Tag جديد
+                // إضافة Tag/Candat
                 elements.addTagPanel.addEventListener('click', () => {
                     if (!appData.currentCategory) {
                         showNotification('الرجاء اختيار قسم أولاً');
@@ -938,7 +919,6 @@
                     elements.tagModal.style.display = 'flex';
                 });
 
-                // إضافة Candat جديد
                 elements.addCandatPanel.addEventListener('click', () => {
                     if (!candatData.currentCategory) {
                         showNotification('الرجاء اختيار قسم أولاً');
@@ -952,73 +932,49 @@
                     elements.candatModal.style.display = 'flex';
                 });
 
-                // تصدير إلى Excel لـ Tags
+                // تصدير/استيراد Excel
                 elements.exportBtnPanel.addEventListener('click', exportToExcel);
-
-                // تصدير إلى Excel لـ Candat
-                elements.exportCandatBtnPanel.addEventListener('click', exportCandatToExcel);
-
-                // استيراد من Excel لـ Tags
                 elements.importBtnPanel.addEventListener('click', () => elements.fileInput.click());
                 elements.fileInput.addEventListener('change', importFromExcel);
 
-                // استيراد من Excel لـ Candat
+                elements.exportCandatBtnPanel.addEventListener('click', exportCandatToExcel);
                 elements.importCandatBtnPanel.addEventListener('click', () => elements.candatFileInput.click());
                 elements.candatFileInput.addEventListener('change', importCandatFromExcel);
 
-                // حفظ القسم لـ Tags
+                // تصدير/استيراد JSON
+                elements.exportJsonBtnPanel.addEventListener('click', exportToJson);
+                elements.importJsonBtnPanel.addEventListener('click', () => elements.jsonFileInput.click());
+                elements.jsonFileInput.addEventListener('change', importFromJson);
+
+                elements.exportCandatJsonBtnPanel.addEventListener('click', exportToJson);
+                elements.importCandatJsonBtnPanel.addEventListener('click', () => elements.candatJsonFileInput.click());
+                elements.candatJsonFileInput.addEventListener('change', importFromJson);
+
+                // حفظ
                 elements.saveCategory.addEventListener('click', saveCategory);
-
-                // حفظ القسم لـ Candat
                 elements.saveCandatCategory.addEventListener('click', saveCandatCategory);
-
-                // حفظ Tag
                 elements.saveTag.addEventListener('click', saveTag);
-
-                // حفظ Candat
                 elements.saveCandat.addEventListener('click', saveCandat);
 
-                // البحث في Tags
-                elements.searchInput.addEventListener('input', () => {
-                    renderTags(elements.searchInput.value.toLowerCase());
-                });
+                // البحث
+                elements.searchInput.addEventListener('input', () => renderTags(elements.searchInput.value.toLowerCase()));
+                elements.candatSearchInput.addEventListener('input', () => renderCandat(elements.candatSearchInput.value.toLowerCase()));
 
-                // البحث في Candat
-                elements.candatSearchInput.addEventListener('input', () => {
-                    renderCandat(elements.candatSearchInput.value.toLowerCase());
-                });
-
-                // إغلاق النوافذ المنبثقة
+                // إغلاق النوافذ
                 document.querySelectorAll('.close').forEach(closeBtn => {
-                    closeBtn.addEventListener('click', function() {
-                        this.closest('.modal').style.display = 'none';
-                    });
+                    closeBtn.addEventListener('click', () => closeBtn.closest('.modal').style.display = 'none');
                 });
 
-                // إغلاق النوافذ المنبثقة عند النقر خارجها
-                window.addEventListener('click', function(event) {
-                    if (event.target === elements.categoryModal) {
-                        elements.categoryModal.style.display = 'none';
-                    }
-                    if (event.target === elements.tagModal) {
-                        elements.tagModal.style.display = 'none';
-                    }
-                    if (event.target === elements.passwordModal) {
-                        elements.passwordModal.style.display = 'none';
-                    }
-                    if (event.target === elements.candatCategoryModal) {
-                        elements.candatCategoryModal.style.display = 'none';
-                    }
-                    if (event.target === elements.candatModal) {
-                        elements.candatModal.style.display = 'none';
+                window.addEventListener('click', (event) => {
+                    if (event.target.classList.contains('modal')) {
+                        event.target.style.display = 'none';
                     }
                 });
             }
 
-            // عرض أقسام Tags
+            // عرض الأقسام
             function renderCategories() {
                 elements.categoriesList.innerHTML = '';
-                
                 appData.categories.forEach(category => {
                     const li = document.createElement('li');
                     li.className = category.id === appData.currentCategory ? 'active' : '';
@@ -1029,7 +985,6 @@
                             <button class="delete-category" data-id="${category.id}"><i class="fas fa-trash"></i></button>
                         </div>
                     `;
-                    
                     li.addEventListener('click', (e) => {
                         if (!e.target.closest('.actions')) {
                             appData.currentCategory = category.id;
@@ -1037,53 +992,41 @@
                             renderTags();
                         }
                     });
-                    
                     li.querySelector('.edit-category').addEventListener('click', (e) => {
                         e.stopPropagation();
                         if (!elements.controlPanel.classList.contains('show')) {
-                            showNotification('الرجاء فتح لوحة التحكم لتعديل الأقسام');
+                            showNotification('الرجاء فتح لوحة التحكم');
                             return;
                         }
-                        const categoryId = e.target.closest('button').dataset.id;
-                        const category = appData.categories.find(c => c.id === categoryId);
-                        if (category) {
-                            appData.editingCategory = categoryId;
-                            elements.modalCategoryTitle.textContent = 'تحرير القسم';
-                            elements.categoryName.value = category.name;
-                            elements.categoryModal.style.display = 'flex';
-                        }
+                        appData.editingCategory = category.id;
+                        elements.modalCategoryTitle.textContent = 'تحرير القسم';
+                        elements.categoryName.value = category.name;
+                        elements.categoryModal.style.display = 'flex';
                     });
-                    
                     li.querySelector('.delete-category').addEventListener('click', (e) => {
                         e.stopPropagation();
                         if (!elements.controlPanel.classList.contains('show')) {
-                            showNotification('الرجاء فتح لوحة التحكم لحذف الأقسام');
+                            showNotification('الرجاء فتح لوحة التحكم');
                             return;
                         }
-                        const categoryId = e.target.closest('button').dataset.id;
-                        const category = appData.categories.find(c => c.id === categoryId);
-                        if (confirm(`هل أنت متأكد من حذف القسم "${category.name}" وجميع الـ Tags التابعة له؟`)) {
-                            appData.categories = appData.categories.filter(c => c.id !== categoryId);
-                            if (appData.currentCategory === categoryId) {
-                                appData.currentCategory = appData.categories.length > 0 ? appData.categories[0].id : null;
+                        if (confirm(`هل أنت متأكد من حذف "${category.name}"؟`)) {
+                            appData.categories = appData.categories.filter(c => c.id !== category.id);
+                            if (appData.currentCategory === category.id) {
+                                appData.currentCategory = appData.categories[0]?.id || null;
                             }
                             saveData();
                             renderCategories();
                             renderTags();
-                            showNotification('تم حذف القسم بنجاح');
+                            showNotification('تم الحذف بنجاح');
                         }
                     });
-                    
                     elements.categoriesList.appendChild(li);
                 });
             }
 
-            // عرض أقسام Candat
             function renderCandatCategories() {
                 elements.candatCategoriesList.innerHTML = '';
-                
                 const mainCategories = candatData.categories.filter(c => !c.parentId);
-                
                 mainCategories.forEach(category => {
                     const li = document.createElement('li');
                     li.className = category.id === candatData.currentCategory ? 'active' : '';
@@ -1094,7 +1037,6 @@
                             <button class="delete-candat-category" data-id="${category.id}"><i class="fas fa-trash"></i></button>
                         </div>
                     `;
-                    
                     li.addEventListener('click', (e) => {
                         if (!e.target.closest('.actions')) {
                             candatData.currentCategory = category.id;
@@ -1102,46 +1044,37 @@
                             renderCandat();
                         }
                     });
-                    
                     li.querySelector('.edit-candat-category').addEventListener('click', (e) => {
                         e.stopPropagation();
                         if (!elements.motaControlPanel.classList.contains('show')) {
-                            showNotification('الرجاء فتح لوحة التحكم لتعديل الأقسام');
+                            showNotification('الرجاء فتح لوحة التحكم');
                             return;
                         }
-                        const categoryId = e.target.closest('button').dataset.id;
-                        const category = candatData.categories.find(c => c.id === categoryId);
-                        if (category) {
-                            candatData.editingCategory = categoryId;
-                            elements.candatModalCategoryTitle.textContent = 'تحرير القسم';
-                            elements.candatCategoryName.value = category.name;
-                            updateParentCategoryDropdown(category.parentId);
-                            elements.candatCategoryModal.style.display = 'flex';
-                        }
+                        candatData.editingCategory = category.id;
+                        elements.candatModalCategoryTitle.textContent = 'تحرير القسم';
+                        elements.candatCategoryName.value = category.name;
+                        updateParentCategoryDropdown(category.parentId);
+                        elements.candatCategoryModal.style.display = 'flex';
                     });
-                    
                     li.querySelector('.delete-candat-category').addEventListener('click', (e) => {
                         e.stopPropagation();
                         if (!elements.motaControlPanel.classList.contains('show')) {
-                            showNotification('الرجاء فتح لوحة التحكم لحذف الأقسام');
+                            showNotification('الرجاء فتح لوحة التحكم');
                             return;
                         }
-                        const categoryId = e.target.closest('button').dataset.id;
-                        const category = candatData.categories.find(c => c.id === categoryId);
-                        if (confirm(`هل أنت متأكد من حذف القسم "${category.name}" وجميع الـ Candat والأقسام الفرعية التابعة له؟`)) {
-                            candatData.categories = candatData.categories.filter(c => c.id !== categoryId && c.parentId !== categoryId);
-                            if (candatData.currentCategory === categoryId) {
-                                candatData.currentCategory = candatData.categories.length > 0 ? candatData.categories[0].id : null;
+                        if (confirm(`هل أنت متأكد من حذف "${category.name}"؟`)) {
+                            candatData.categories = candatData.categories.filter(c => c.id !== category.id && c.parentId !== category.id);
+                            if (candatData.currentCategory === category.id) {
+                                candatData.currentCategory = candatData.categories[0]?.id || null;
                             }
                             saveCandatData();
                             renderCandatCategories();
                             renderCandat();
-                            showNotification('تم حذف القسم بنجاح');
+                            showNotification('تم الحذف بنجاح');
                         }
                     });
-                    
                     elements.candatCategoriesList.appendChild(li);
-                    
+
                     const subCategories = candatData.categories.filter(c => c.parentId === category.id);
                     subCategories.forEach(subCategory => {
                         const subLi = document.createElement('li');
@@ -1153,7 +1086,6 @@
                                 <button class="delete-candat-category" data-id="${subCategory.id}"><i class="fas fa-trash"></i></button>
                             </div>
                         `;
-                        
                         subLi.addEventListener('click', (e) => {
                             if (!e.target.closest('.actions')) {
                                 candatData.currentCategory = subCategory.id;
@@ -1161,55 +1093,44 @@
                                 renderCandat();
                             }
                         });
-                        
                         subLi.querySelector('.edit-candat-category').addEventListener('click', (e) => {
                             e.stopPropagation();
                             if (!elements.motaControlPanel.classList.contains('show')) {
-                                showNotification('الرجاء فتح لوحة التحكم لتعديل الأقسام');
+                                showNotification('الرجاء فتح لوحة التحكم');
                                 return;
                             }
-                            const categoryId = e.target.closest('button').dataset.id;
-                            const category = candatData.categories.find(c => c.id === categoryId);
-                            if (category) {
-                                candatData.editingCategory = categoryId;
-                                elements.candatModalCategoryTitle.textContent = 'تحرير القسم';
-                                elements.candatCategoryName.value = category.name;
-                                updateParentCategoryDropdown(category.parentId);
-                                elements.candatCategoryModal.style.display = 'flex';
-                            }
+                            candatData.editingCategory = subCategory.id;
+                            elements.candatModalCategoryTitle.textContent = 'تحرير القسم';
+                            elements.candatCategoryName.value = subCategory.name;
+                            updateParentCategoryDropdown(subCategory.parentId);
+                            elements.candatCategoryModal.style.display = 'flex';
                         });
-                        
                         subLi.querySelector('.delete-candat-category').addEventListener('click', (e) => {
                             e.stopPropagation();
                             if (!elements.motaControlPanel.classList.contains('show')) {
-                                showNotification('الرجاء فتح لوحة التحكم لحذف الأقسام');
+                                showNotification('الرجاء فتح لوحة التحكم');
                                 return;
                             }
-                            const categoryId = e.target.closest('button').dataset.id;
-                            const category = candatData.categories.find(c => c.id === categoryId);
-                            if (confirm(`هل أنت متأكد من حذف القسم "${category.name}" وجميع الـ Candat التابعة له؟`)) {
-                                candatData.categories = candatData.categories.filter(c => c.id !== categoryId);
-                                if (candatData.currentCategory === categoryId) {
-                                    candatData.currentCategory = candatData.categories.length > 0 ? candatData.categories[0].id : null;
+                            if (confirm(`هل أنت متأكد من حذف "${subCategory.name}"؟`)) {
+                                candatData.categories = candatData.categories.filter(c => c.id !== subCategory.id);
+                                if (candatData.currentCategory === subCategory.id) {
+                                    candatData.currentCategory = candatData.categories[0]?.id || null;
                                 }
                                 saveCandatData();
                                 renderCandatCategories();
                                 renderCandat();
-                                showNotification('تم حذف القسم بنجاح');
+                                showNotification('تم الحذف بنجاح');
                             }
                         });
-                        
                         elements.candatCategoriesList.appendChild(subLi);
                     });
                 });
             }
 
-            // عرض الـ Tags
+            // عرض Tags
             function renderTags(searchTerm = '') {
                 elements.tagsContainer.innerHTML = '';
-                
                 if (searchTerm) {
-                    // البحث في جميع Tags عبر جميع الأقسام
                     const filteredTags = [];
                     appData.categories.forEach(category => {
                         const matchingTags = category.tags.filter(tag => 
@@ -1220,7 +1141,7 @@
                     });
 
                     if (filteredTags.length === 0) {
-                        elements.tagsContainer.innerHTML = '<p style="text-align: center; grid-column: 1 / -1;">لا توجد Tags مطابقة</p>';
+                        elements.tagsContainer.innerHTML = '<p style="text-align: center; grid-column: 1 / -1;">لا توجد Tags</p>';
                         return;
                     }
 
@@ -1235,22 +1156,17 @@
                             <h3>${tag.name} (${tag.categoryName})</h3>
                             <p>${tag.content}</p>
                         `;
-                        
                         tagCard.addEventListener('click', (e) => {
                             if (!e.target.closest('.tag-actions')) {
                                 copyToClipboard(tag.content);
-                                tagCard.style.transition = 'background-color 0.3s';
                                 tagCard.style.backgroundColor = 'rgba(138, 43, 226, 0.2)';
-                                setTimeout(() => {
-                                    tagCard.style.backgroundColor = 'var(--card-bg)';
-                                }, 300);
+                                setTimeout(() => tagCard.style.backgroundColor = 'var(--card-bg)', 300);
                             }
                         });
-                        
                         tagCard.querySelector('.edit-tag').addEventListener('click', (e) => {
                             e.stopPropagation();
                             if (!elements.controlPanel.classList.contains('show')) {
-                                showNotification('الرجاء فتح لوحة التحكم لتعديل الـ Tags');
+                                showNotification('الرجاء فتح لوحة التحكم');
                                 return;
                             }
                             const tagId = e.target.closest('button').dataset.id;
@@ -1258,21 +1174,18 @@
                             const category = appData.categories.find(c => c.name === categoryName);
                             if (category) {
                                 const tag = category.tags.find(t => t.id === tagId);
-                                if (tag) {
-                                    appData.editingTag = { categoryId: category.id, tagId };
-                                    elements.modalTagTitle.textContent = 'تحرير Tag';
-                                    elements.tagName.value = tag.name;
-                                    elements.tagContent.value = tag.content;
-                                    updateCategoryDropdown();
-                                    elements.tagModal.style.display = 'flex';
-                                }
+                                appData.editingTag = { categoryId: category.id, tagId };
+                                elements.modalTagTitle.textContent = 'تحرير Tag';
+                                elements.tagName.value = tag.name;
+                                elements.tagContent.value = tag.content;
+                                updateCategoryDropdown();
+                                elements.tagModal.style.display = 'flex';
                             }
                         });
-                        
                         tagCard.querySelector('.delete-tag').addEventListener('click', (e) => {
                             e.stopPropagation();
                             if (!elements.controlPanel.classList.contains('show')) {
-                                showNotification('الرجاء فتح لوحة التحكم لحذف الـ Tags');
+                                showNotification('الرجاء فتح لوحة التحكم');
                                 return;
                             }
                             const tagId = e.target.closest('button').dataset.id;
@@ -1280,30 +1193,26 @@
                             const category = appData.categories.find(c => c.name === categoryName);
                             if (category) {
                                 const tag = category.tags.find(t => t.id === tagId);
-                                if (confirm(`هل أنت متأكد من حذف الـ Tag "${tag.name}"؟`)) {
+                                if (confirm(`هل أنت متأكد من حذف "${tag.name}"؟`)) {
                                     category.tags = category.tags.filter(t => t.id !== tagId);
                                     saveData();
                                     renderTags(searchTerm);
-                                    showNotification('تم حذف الـ Tag بنجاح');
+                                    showNotification('تم الحذف بنجاح');
                                 }
                             }
                         });
-                        
                         elements.tagsContainer.appendChild(tagCard);
                     });
                 } else {
-                    // عرض Tags للقسم المحدد
                     const currentCategory = appData.categories.find(c => c.id === appData.currentCategory);
                     if (!currentCategory) {
-                        elements.tagsContainer.innerHTML = '<p style="text-align: center; grid-column: 1 / -1;">اختر قسمًا لعرض الـ Tags</p>';
+                        elements.tagsContainer.innerHTML = '<p style="text-align: center; grid-column: 1 / -1;">اختر قسمًا</p>';
                         return;
                     }
-                    
                     if (currentCategory.tags.length === 0) {
-                        elements.tagsContainer.innerHTML = '<p style="text-align: center; grid-column: 1 / -1;">لا توجد Tags متاحة</p>';
+                        elements.tagsContainer.innerHTML = '<p style="text-align: center; grid-column: 1 / -1;">لا توجد Tags</p>';
                         return;
                     }
-                    
                     currentCategory.tags.forEach(tag => {
                         const tagCard = document.createElement('div');
                         tagCard.className = 'tag-card';
@@ -1315,63 +1224,52 @@
                             <h3>${tag.name}</h3>
                             <p>${tag.content}</p>
                         `;
-                        
                         tagCard.addEventListener('click', (e) => {
                             if (!e.target.closest('.tag-actions')) {
                                 copyToClipboard(tag.content);
-                                tagCard.style.transition = 'background-color 0.3s';
                                 tagCard.style.backgroundColor = 'rgba(138, 43, 226, 0.2)';
-                                setTimeout(() => {
-                                    tagCard.style.backgroundColor = 'var(--card-bg)';
-                                }, 300);
+                                setTimeout(() => tagCard.style.backgroundColor = 'var(--card-bg)', 300);
                             }
                         });
-                        
                         tagCard.querySelector('.edit-tag').addEventListener('click', (e) => {
                             e.stopPropagation();
                             if (!elements.controlPanel.classList.contains('show')) {
-                                showNotification('الرجاء فتح لوحة التحكم لتعديل الـ Tags');
+                                showNotification('الرجاء فتح لوحة التحكم');
                                 return;
                             }
                             const tagId = e.target.closest('button').dataset.id;
                             const tag = currentCategory.tags.find(t => t.id === tagId);
-                            if (tag) {
-                                appData.editingTag = { categoryId: currentCategory.id, tagId };
-                                elements.modalTagTitle.textContent = 'تحرير Tag';
-                                elements.tagName.value = tag.name;
-                                elements.tagContent.value = tag.content;
-                                updateCategoryDropdown();
-                                elements.tagModal.style.display = 'flex';
-                            }
+                            appData.editingTag = { categoryId: currentCategory.id, tagId };
+                            elements.modalTagTitle.textContent = 'تحرير Tag';
+                            elements.tagName.value = tag.name;
+                            elements.tagContent.value = tag.content;
+                            updateCategoryDropdown();
+                            elements.tagModal.style.display = 'flex';
                         });
-                        
                         tagCard.querySelector('.delete-tag').addEventListener('click', (e) => {
                             e.stopPropagation();
                             if (!elements.controlPanel.classList.contains('show')) {
-                                showNotification('الرجاء فتح لوحة التحكم لحذف الـ Tags');
+                                showNotification('الرجاء فتح لوحة التحكم');
                                 return;
                             }
                             const tagId = e.target.closest('button').dataset.id;
                             const tag = currentCategory.tags.find(t => t.id === tagId);
-                            if (confirm(`هل أنت متأكد من حذف الـ Tag "${tag.name}"؟`)) {
+                            if (confirm(`هل أنت متأكد من حذف "${tag.name}"؟`)) {
                                 currentCategory.tags = currentCategory.tags.filter(t => t.id !== tagId);
                                 saveData();
                                 renderTags();
-                                showNotification('تم حذف الـ Tag بنجاح');
+                                showNotification('تم الحذف بنجاح');
                             }
                         });
-                        
                         elements.tagsContainer.appendChild(tagCard);
                     });
                 }
             }
 
-            // عرض الـ Candat
+            // عرض Candat
             function renderCandat(searchTerm = '') {
                 elements.tagsContainer.innerHTML = '';
-                
                 if (searchTerm) {
-                    // البحث في جميع Candat عبر جميع الأقسام
                     const filteredCandats = [];
                     candatData.categories.forEach(category => {
                         const matchingCandats = category.candats.filter(candat => 
@@ -1382,7 +1280,7 @@
                     });
 
                     if (filteredCandats.length === 0) {
-                        elements.tagsContainer.innerHTML = '<p style="text-align: center; grid-column: 1 / -1;">لا توجد Candat مطابقة</p>';
+                        elements.tagsContainer.innerHTML = '<p style="text-align: center; grid-column: 1 / -1;">لا توجد Candat</p>';
                         return;
                     }
 
@@ -1397,22 +1295,17 @@
                             <h3>${candat.name} (${candat.categoryName})</h3>
                             <p>${candat.content}</p>
                         `;
-                        
                         candatCard.addEventListener('click', (e) => {
                             if (!e.target.closest('.tag-actions')) {
                                 copyToClipboard(candat.content);
-                                candatCard.style.transition = 'background-color 0.3s';
                                 candatCard.style.backgroundColor = 'rgba(138, 43, 226, 0.2)';
-                                setTimeout(() => {
-                                    candatCard.style.backgroundColor = 'var(--card-bg)';
-                                }, 300);
+                                setTimeout(() => candatCard.style.backgroundColor = 'var(--card-bg)', 300);
                             }
                         });
-                        
                         candatCard.querySelector('.edit-candat').addEventListener('click', (e) => {
                             e.stopPropagation();
                             if (!elements.motaControlPanel.classList.contains('show')) {
-                                showNotification('الرجاء فتح لوحة التحكم لتعديل الـ Candat');
+                                showNotification('الرجاء فتح لوحة التحكم');
                                 return;
                             }
                             const candatId = e.target.closest('button').dataset.id;
@@ -1420,21 +1313,18 @@
                             const category = candatData.categories.find(c => c.name === categoryName);
                             if (category) {
                                 const candat = category.candats.find(t => t.id === candatId);
-                                if (candat) {
-                                    candatData.editingCandat = { categoryId: category.id, candatId };
-                                    elements.candatModalTitle.textContent = 'تحرير Candat';
-                                    elements.candatName.value = candat.name;
-                                    elements.candatContent.value = candat.content;
-                                    updateCandatCategoryDropdown();
-                                    elements.candatModal.style.display = 'flex';
-                                }
+                                candatData.editingCandat = { categoryId: category.id, candatId };
+                                elements.candatModalTitle.textContent = 'تحرير Candat';
+                                elements.candatName.value = candat.name;
+                                elements.candatContent.value = candat.content;
+                                updateCandatCategoryDropdown();
+                                elements.candatModal.style.display = 'flex';
                             }
                         });
-                        
                         candatCard.querySelector('.delete-candat').addEventListener('click', (e) => {
                             e.stopPropagation();
                             if (!elements.motaControlPanel.classList.contains('show')) {
-                                showNotification('الرجاء فتح لوحة التحكم لحذف الـ Candat');
+                                showNotification('الرجاء فتح لوحة التحكم');
                                 return;
                             }
                             const candatId = e.target.closest('button').dataset.id;
@@ -1442,30 +1332,26 @@
                             const category = candatData.categories.find(c => c.name === categoryName);
                             if (category) {
                                 const candat = category.candats.find(t => t.id === candatId);
-                                if (confirm(`هل أنت متأكد من حذف الـ Candat "${candat.name}"؟`)) {
+                                if (confirm(`هل أنت متأكد من حذف "${candat.name}"؟`)) {
                                     category.candats = category.candats.filter(t => t.id !== candatId);
                                     saveCandatData();
                                     renderCandat(searchTerm);
-                                    showNotification('تم حذف الـ Candat بنجاح');
+                                    showNotification('تم الحذف بنجاح');
                                 }
                             }
                         });
-                        
                         elements.tagsContainer.appendChild(candatCard);
                     });
                 } else {
-                    // عرض Candat للقسم المحدد
                     const currentCategory = candatData.categories.find(c => c.id === candatData.currentCategory);
                     if (!currentCategory) {
-                        elements.tagsContainer.innerHTML = '<p style="text-align: center; grid-column: 1 / -1;">اختر قسمًا لعرض الـ Candat</p>';
+                        elements.tagsContainer.innerHTML = '<p style="text-align: center; grid-column: 1 / -1;">اختر قسمًا</p>';
                         return;
                     }
-                    
                     if (currentCategory.candats.length === 0) {
-                        elements.tagsContainer.innerHTML = '<p style="text-align: center; grid-column: 1 / -1;">لا توجد Candat متاحة</p>';
+                        elements.tagsContainer.innerHTML = '<p style="text-align: center; grid-column: 1 / -1;">لا توجد Candat</p>';
                         return;
                     }
-                    
                     currentCategory.candats.forEach(candat => {
                         const candatCard = document.createElement('div');
                         candatCard.className = 'candat-card';
@@ -1477,58 +1363,49 @@
                             <h3>${candat.name}</h3>
                             <p>${candat.content}</p>
                         `;
-                        
                         candatCard.addEventListener('click', (e) => {
                             if (!e.target.closest('.tag-actions')) {
                                 copyToClipboard(candat.content);
-                                candatCard.style.transition = 'background-color 0.3s';
                                 candatCard.style.backgroundColor = 'rgba(138, 43, 226, 0.2)';
-                                setTimeout(() => {
-                                    candatCard.style.backgroundColor = 'var(--card-bg)';
-                                }, 300);
+                                setTimeout(() => candatCard.style.backgroundColor = 'var(--card-bg)', 300);
                             }
                         });
-                        
                         candatCard.querySelector('.edit-candat').addEventListener('click', (e) => {
                             e.stopPropagation();
                             if (!elements.motaControlPanel.classList.contains('show')) {
-                                showNotification('الرجاء فتح لوحة التحكم لتعديل الـ Candat');
+                                showNotification('الرجاء فتح لوحة التحكم');
                                 return;
                             }
                             const candatId = e.target.closest('button').dataset.id;
                             const candat = currentCategory.candats.find(t => t.id === candatId);
-                            if (candat) {
-                                candatData.editingCandat = { categoryId: currentCategory.id, candatId };
-                                elements.candatModalTitle.textContent = 'تحرير Candat';
-                                elements.candatName.value = candat.name;
-                                elements.candatContent.value = candat.content;
-                                updateCandatCategoryDropdown();
-                                elements.candatModal.style.display = 'flex';
-                            }
+                            candatData.editingCandat = { categoryId: currentCategory.id, candatId };
+                            elements.candatModalTitle.textContent = 'تحرير Candat';
+                            elements.candatName.value = candat.name;
+                            elements.candatContent.value = candat.content;
+                            updateCandatCategoryDropdown();
+                            elements.candatModal.style.display = 'flex';
                         });
-                        
                         candatCard.querySelector('.delete-candat').addEventListener('click', (e) => {
                             e.stopPropagation();
                             if (!elements.motaControlPanel.classList.contains('show')) {
-                                showNotification('الرجاء فتح لوحة التحكم لحذف الـ Candat');
+                                showNotification('الرجاء فتح لوحة التحكم');
                                 return;
                             }
                             const candatId = e.target.closest('button').dataset.id;
                             const candat = currentCategory.candats.find(t => t.id === candatId);
-                            if (confirm(`هل أنت متأكد من حذف الـ Candat "${candat.name}"؟`)) {
+                            if (confirm(`هل أنت متأكد من حذف "${candat.name}"؟`)) {
                                 currentCategory.candats = currentCategory.candats.filter(t => t.id !== candatId);
                                 saveCandatData();
                                 renderCandat();
-                                showNotification('تم حذف الـ Candat بنجاح');
+                                showNotification('تم الحذف بنجاح');
                             }
                         });
-                        
                         elements.tagsContainer.appendChild(candatCard);
                     });
                 }
             }
 
-            // تحديث قائمة أقسام Tags
+            // تحديث القوائم
             function updateCategoryDropdown() {
                 elements.tagCategory.innerHTML = '';
                 appData.categories.forEach(category => {
@@ -1544,7 +1421,6 @@
                 });
             }
 
-            // تحديث قائمة أقسام Candat
             function updateCandatCategoryDropdown() {
                 elements.candatCategory.innerHTML = '';
                 candatData.categories.forEach(category => {
@@ -1560,175 +1436,174 @@
                 });
             }
 
-            // تحديث قائمة الأقسام الرئيسية لـ Candat
             function updateParentCategoryDropdown(selectedId = '') {
-                elements.parentCategory.innerHTML = '<option value="">لا يوجد قسم رئيسي (قسم رئيسي)</option>';
+                elements.parentCategory.innerHTML = '<option value="">لا يوجد قسم رئيسي</option>';
                 const mainCategories = candatData.categories.filter(c => !c.parentId);
                 mainCategories.forEach(category => {
                     if (category.id !== candatData.editingCategory) {
                         const option = document.createElement('option');
                         option.value = category.id;
                         option.textContent = category.name;
-                        if (category.id === selectedId) {
-                            option.selected = true;
-                        }
+                        if (category.id === selectedId) option.selected = true;
                         elements.parentCategory.appendChild(option);
                     }
                 });
             }
 
-            // حفظ قسم Tags
+            // حفظ البيانات
             function saveCategory() {
                 const name = elements.categoryName.value.trim();
                 if (!name) {
                     showNotification('الرجاء إدخال اسم القسم');
                     return;
                 }
-                
                 if (appData.editingCategory) {
                     const category = appData.categories.find(c => c.id === appData.editingCategory);
-                    if (category) {
-                        category.name = name;
-                    }
+                    category.name = name;
                 } else {
-                    const newCategory = {
-                        id: generateId(),
-                        name: name,
-                        tags: []
-                    };
+                    const newCategory = { id: generateId(), name, tags: [] };
                     appData.categories.push(newCategory);
-                    if (!appData.currentCategory) {
-                        appData.currentCategory = newCategory.id;
-                    }
+                    if (!appData.currentCategory) appData.currentCategory = newCategory.id;
                 }
-                
                 saveData();
                 renderCategories();
                 renderTags();
                 elements.categoryModal.style.display = 'none';
-                showNotification('تم حفظ القسم بنجاح');
+                showNotification('تم الحفظ بنجاح');
             }
 
-            // حفظ قسم Candat
             function saveCandatCategory() {
                 const name = elements.candatCategoryName.value.trim();
                 const parentId = elements.parentCategory.value || null;
-                
                 if (!name) {
                     showNotification('الرجاء إدخال اسم القسم');
                     return;
                 }
-                
                 if (candatData.editingCategory) {
                     const category = candatData.categories.find(c => c.id === candatData.editingCategory);
-                    if (category) {
-                        category.name = name;
-                        category.parentId = parentId;
-                    }
+                    category.name = name;
+                    category.parentId = parentId;
                 } else {
-                    const newCategory = {
-                        id: generateId(),
-                        name: name,
-                        parentId: parentId,
-                        candats: []
-                    };
+                    const newCategory = { id: generateId(), name, parentId, candats: [] };
                     candatData.categories.push(newCategory);
-                    if (!candatData.currentCategory) {
-                        candatData.currentCategory = newCategory.id;
-                    }
+                    if (!candatData.currentCategory) candatData.currentCategory = newCategory.id;
                 }
-                
                 saveCandatData();
                 renderCandatCategories();
                 renderCandat();
                 elements.candatCategoryModal.style.display = 'none';
-                showNotification('تم حفظ القسم بنجاح');
+                showNotification('تم الحفظ بنجاح');
             }
 
-            // حفظ Tag
             function saveTag() {
                 const name = elements.tagName.value.trim();
                 const content = elements.tagContent.value.trim();
                 const categoryId = elements.tagCategory.value;
-                
                 if (!name || !content) {
-                    showNotification('الرجاء إدخال اسم ومحتوى الـ Tag');
+                    showNotification('الرجاء إدخال اسم ومحتوى');
                     return;
                 }
-                
                 const category = appData.categories.find(c => c.id === categoryId);
-                if (!category) return;
-                
                 if (appData.editingTag) {
                     const tag = category.tags.find(t => t.id === appData.editingTag.tagId);
-                    if (tag) {
-                        tag.name = name;
-                        tag.content = content;
-                        
-                        if (categoryId !== appData.editingTag.categoryId) {
-                            const oldCategory = appData.categories.find(c => c.id === appData.editingTag.categoryId);
-                            if (oldCategory) {
-                                oldCategory.tags = oldCategory.tags.filter(t => t.id !== appData.editingTag.tagId);
-                            }
-                            category.tags.push(tag);
-                        }
+                    tag.name = name;
+                    tag.content = content;
+                    if (categoryId !== appData.editingTag.categoryId) {
+                        const oldCategory = appData.categories.find(c => c.id === appData.editingTag.categoryId);
+                        oldCategory.tags = oldCategory.tags.filter(t => t.id !== appData.editingTag.tagId);
+                        category.tags.push(tag);
                     }
                 } else {
-                    const newTag = {
-                        id: generateId(),
-                        name: name,
-                        content: content
-                    };
+                    const newTag = { id: generateId(), name, content };
                     category.tags.push(newTag);
                 }
-                
                 saveData();
                 renderTags();
                 elements.tagModal.style.display = 'none';
-                showNotification('تم حفظ الـ Tag بنجاح');
+                showNotification('تم الحفظ بنجاح');
             }
 
-            // حفظ Candat
             function saveCandat() {
                 const name = elements.candatName.value.trim();
                 const content = elements.candatContent.value.trim();
                 const categoryId = elements.candatCategory.value;
-                
                 if (!name || !content) {
-                    showNotification('الرجاء إدخال اسم ومحتوى الـ Candat');
+                    showNotification('الرجاء إدخال اسم ومحتوى');
                     return;
                 }
-                
                 const category = candatData.categories.find(c => c.id === categoryId);
-                if (!category) return;
-                
                 if (candatData.editingCandat) {
                     const candat = category.candats.find(t => t.id === candatData.editingCandat.candatId);
-                    if (candat) {
-                        candat.name = name;
-                        candat.content = content;
-                        
-                        if (categoryId !== candatData.editingCandat.categoryId) {
-                            const oldCategory = candatData.categories.find(c => c.id === candatData.editingCandat.categoryId);
-                            if (oldCategory) {
-                                oldCategory.candats = oldCategory.candats.filter(t => t.id !== candatData.editingCandat.candatId);
-                            }
-                            category.candats.push(candat);
-                        }
+                    candat.name = name;
+                    candat.content = content;
+                    if (categoryId !== candatData.editingCandat.categoryId) {
+                        const oldCategory = candatData.categories.find(c => c.id === candatData.editingCandat.categoryId);
+                        oldCategory.candats = oldCategory.candats.filter(t => t.id !== candatData.editingCandat.candatId);
+                        category.candats.push(candat);
                     }
                 } else {
-                    const newCandat = {
-                        id: generateId(),
-                        name: name,
-                        content: content
-                    };
+                    const newCandat = { id: generateId(), name, content };
                     category.candats.push(newCandat);
                 }
-                
                 saveCandatData();
                 renderCandat();
                 elements.candatModal.style.display = 'none';
-                showNotification('تم حفظ الـ Candat بنجاح');
+                showNotification('تم الحفظ بنجاح');
             }
 
-            // تصدير إلى Excel لـ Tags
+            // دوال مساعدة
+            function generateId() {
+                return Math.random().toString(36).substr(2, 9);
+            }
+
+            function copyToClipboard(text) {
+                navigator.clipboard.writeText(text).then(() => {
+                    showNotification('تم النسخ بنجاح');
+                }).catch(() => {
+                    showNotification('فشل النسخ');
+                });
+            }
+
+            function showNotification(message) {
+                elements.notification.textContent = message;
+                elements.notification.classList.add('show');
+                setTimeout(() => elements.notification.classList.remove('show'), 3000);
+            }
+
+            // تصدير Excel
+            function exportToExcel() {
+                const data = appData.categories.map(category => 
+                    category.tags.map(tag => ({
+                        Category: category.name,
+                        TagName: tag.name,
+                        TagContent: tag.content
+                    }))
+                ).flat();
+                const ws = XLSX.utils.json_to_sheet(data);
+                const wb = XLSX.utils.book_new();
+                XLSX.utils.book_append_sheet(wb, ws, 'Tags');
+                XLSX.writeFile(wb, 'tags_export.xlsx');
+            }
+
+            function importFromExcel(event) {
+                const file = event.target.files[0];
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const data = new Uint8Array(e.target.result);
+                    const workbook = XLSX.read(data, { type: 'array' });
+                    const sheet = workbook.Sheets[workbook.SheetNames[0]];
+                    const json = XLSX.utils.sheet_to_json(sheet);
+                    appData.categories = [];
+                    json.forEach(row => {
+                        let category = appData.categories.find(c => c.name === row.Category);
+                        if (!category) {
+                            category = { id: generateId(), name: row.Category, tags: [] };
+                            appData.categories.push(category);
+                        }
+                        category.tags.push({
+                            id: generateId(),
+                            name: row.TagName,
+                            content: row.TagContent
+                        });
+                    });
+                    if (appData.categories.length > 0) appData.currentCategory = appData.categories[0].id
