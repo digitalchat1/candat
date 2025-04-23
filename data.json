@@ -2,31 +2,127 @@
   "tags": {
     "categories": [
       {
-        "id": "0hg3o29j6",
+        "id": "m0g0lpa11",
         "name": "Sales Tags",
-        "items": [],
+        "items": [
+          {
+            "id": "0kj1z1hih",
+            "name": "Invoice Inquiry",
+            "content": "Invoice Inquiry [ADSL]"
+          },
+          {
+            "id": "pwffn14a9",
+            "name": "Early renewal",
+            "content": "Early renewal [ADSL]"
+          },
+          {
+            "id": "lii0qksty",
+            "name": "My We Usage Issue",
+            "content": "My We Usage Issue [ADSL]"
+          },
+          {
+            "id": "n4qyk10s0",
+            "name": "Usage",
+            "content": "Usage [ADSL]"
+          },
+          {
+            "id": "06040txe6",
+            "name": "My We Renewal date",
+            "content": "My We Renewal date [ADSL]"
+          },
+          {
+            "id": "cfcvwvxdn",
+            "name": "Recharge card",
+            "content": "Recharge card [ADSL]"
+          },
+          {
+            "id": "iuspe3xlt",
+            "name": "Change Data",
+            "content": "Change Data [ADSL]"
+          },
+          {
+            "id": "qblc02vez",
+            "name": "Change package",
+            "content": "Change package [S] [ADSL]"
+          },
+          {
+            "id": "t1jvi4o23",
+            "name": "Payment Not Clear",
+            "content": "Payment Not Clear [ADSL]"
+          },
+          {
+            "id": "tsu5iz2vi",
+            "name": "Installation Follow Up",
+            "content": "Installation Follow Up [ADSL]"
+          },
+          {
+            "id": "5uz20zr63",
+            "name": "ADSL and VDSL CPE",
+            "content": "ADSL and VDSL CPE [ADSL]"
+          },
+          {
+            "id": "1cl5t9a76",
+            "name": "No answer",
+            "content": "No answer [ADSL]"
+          },
+          {
+            "id": "ausoq2chp",
+            "name": "Idle or Dropped within chatting",
+            "content": "Idle or Dropped within chatting [ADSL]"
+          },
+          {
+            "id": "jaylekycs",
+            "name": "Idle or Dropped Troubleshooting",
+            "content": "Idle or Dropped Troubleshooting [ADSL]"
+          },
+          {
+            "id": "rxr4c98vq",
+            "name": "Handled and Dropped",
+            "content": "Handled and Dropped [ADSL]"
+          },
+          {
+            "id": "vmjul85x7",
+            "name": "Handled and Idle",
+            "content": "Handled and Idle [ADSL]"
+          },
+          {
+            "id": "vkmqlo8wt",
+            "name": "We App",
+            "content": "We App [ADSL]"
+          },
+          {
+            "id": "gktivpexg",
+            "name": "My WE issues",
+            "content": "My WE issues [ADSL]"
+          },
+          {
+            "id": "kxqnd4o6y",
+            "name": "My WE Registration",
+            "content": "My WE Registration [ADSL]"
+          }
+        ],
         "parentId": null
       },
       {
-        "id": "l2zjjtwjt",
+        "id": "sww5pv7bd",
         "name": "Tech Tags",
         "items": [],
         "parentId": null
       },
       {
-        "id": "bqzl1qhgx",
+        "id": "u9rau31ai",
         "name": "Voice Tags",
         "items": [],
         "parentId": null
       },
       {
-        "id": "tktypm1yl",
+        "id": "9nyzbar0b",
         "name": "WE Gold Tags",
         "items": [],
         "parentId": null
       }
     ],
-    "currentCategory": "0hg3o29j6",
+    "currentCategory": "m0g0lpa11",
     "editingCategory": null,
     "editingItem": null
   },
