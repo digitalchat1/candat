@@ -1,10 +1,10 @@
 {
-  "tagsData": {
+  "tags": {
     "categories": [
       {
         "id": "sales",
         "name": "Sales Tags",
-        "tags": [
+        "items": [
           {
             "id": "1",
             "name": "Invoice Inquiry",
@@ -20,7 +20,7 @@
       {
         "id": "tech",
         "name": "Tech Tags",
-        "tags": [
+        "items": [
           {
             "id": "3",
             "name": "Physical Problem",
@@ -36,13 +36,13 @@
     ],
     "currentCategory": "sales"
   },
-  "candatData": {
+  "candat": {
     "categories": [
       {
         "id": "main1",
         "name": "Main Category 1",
         "parentId": null,
-        "candats": [
+        "items": [
           {
             "id": "1",
             "name": "Candat 1",
@@ -59,15 +59,22 @@
         "id": "sub1",
         "name": "Sub Category 1",
         "parentId": "main1",
-        "candats": [
+        "items": [
           {
             "id": "3",
             "name": "Sub Candat 1",
             "content": "Content for Sub Candat 1"
           }
         ]
+      },
+      {
+        "id": "jovfzmed7",
+        "name": "test",
+        "items": [],
+        "parentId": null
       }
     ],
-    "currentCategory": "main1"
+    "currentCategory": "main1",
+    "editingCategory": null
   }
 }
