@@ -1,1 +1,39 @@
-
+{
+  "tags": {
+    "categories": [
+      {
+        "id": "0hg3o29j6",
+        "name": "Sales Tags",
+        "items": [],
+        "parentId": null
+      },
+      {
+        "id": "l2zjjtwjt",
+        "name": "Tech Tags",
+        "items": [],
+        "parentId": null
+      },
+      {
+        "id": "bqzl1qhgx",
+        "name": "Voice Tags",
+        "items": [],
+        "parentId": null
+      },
+      {
+        "id": "tktypm1yl",
+        "name": "WE Gold Tags",
+        "items": [],
+        "parentId": null
+      }
+    ],
+    "currentCategory": "0hg3o29j6",
+    "editingCategory": null,
+    "editingItem": null
+  },
+  "candat": {
+    "categories": [],
+    "currentCategory": null,
+    "editingCategory": null,
+    "editingItem": null
+  }
+}
