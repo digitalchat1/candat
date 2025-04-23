@@ -2,30 +2,11 @@
   "tags": {
     "categories": [
       {
-        "id": "pu649fn5a",
+        "id": "1ca6zmpul",
         "name": "1",
         "items": [
           {
-            "id": "f0n7goi3u",
-            "name": "1",
-            "content": "1"
-          }
-        ],
-        "parentId": null
-      }
-    ],
-    "currentCategory": "pu649fn5a",
-    "editingCategory": null,
-    "editingItem": null
-  },
-  "candat": {
-    "categories": [
-      {
-        "id": "bd2wh47mu",
-        "name": "1",
-        "items": [
-          {
-            "id": "qc85y8krx",
+            "id": "ultmtn3l7",
             "name": "2",
             "content": "2"
           }
@@ -33,7 +14,13 @@
         "parentId": null
       }
     ],
-    "currentCategory": "bd2wh47mu",
+    "currentCategory": "1ca6zmpul",
+    "editingCategory": null,
+    "editingItem": null
+  },
+  "candat": {
+    "categories": [],
+    "currentCategory": null,
     "editingCategory": null,
     "editingItem": null
   }
