@@ -523,7 +523,373 @@
       {
         "id": "u9rau31ai",
         "name": "Voice Tags",
-        "items": [],
+        "items": [
+          {
+            "id": "bmoo55hej",
+            "name": "FCC New Ticket",
+            "content": "FCC New Ticket { Voice }"
+          },
+          {
+            "id": "n95al86ou",
+            "name": "FCC Within SLA",
+            "content": "FCC Within SLA { Voice }"
+          },
+          {
+            "id": "72lwbm0ud",
+            "name": "FCC Pending",
+            "content": "FCC Pending { Voice }"
+          },
+          {
+            "id": "7uuhkjy3u",
+            "name": "Receiving Only Problem",
+            "content": "Receiving Only Problem { Voice }"
+          },
+          {
+            "id": "2cmx4rilr",
+            "name": "Receiving Only Problem",
+            "content": "Receiving Only Problem { Voice }"
+          },
+          {
+            "id": "gye8ph0r4",
+            "name": "Receiving Only VAS",
+            "content": "Receiving Only VAS { Voice }"
+          },
+          {
+            "id": "wlmm1d9ii",
+            "name": "Bill Amount",
+            "content": "Bill Amount { Voice }"
+          },
+          {
+            "id": "rbykjzvnl",
+            "name": "Bill Description",
+            "content": "Bill Description { Voice }"
+          },
+          {
+            "id": "qujzk94x0",
+            "name": "Bill Cycle",
+            "content": "Bill Cycle { Voice }"
+          },
+          {
+            "id": "69ck27ld5",
+            "name": "Payment Info",
+            "content": "Payment Info { Voice }"
+          },
+          {
+            "id": "q819jydk5",
+            "name": "Billing Cut off",
+            "content": "Billing Cut off { Voice }"
+          },
+          {
+            "id": "w2mk8nmhj",
+            "name": "Payment Methods",
+            "content": "Payment Methods { Voice }"
+          },
+          {
+            "id": "mqonalncr",
+            "name": "Bill Complaints",
+            "content": "Bill Complaints { Voice }"
+          },
+          {
+            "id": "o04oid6r3",
+            "name": "New subscription Procedures",
+            "content": "New subscription Procedures { Voice }"
+          },
+          {
+            "id": "5ockqb63c",
+            "name": "New subscription Request",
+            "content": "New subscription Request { Voice }"
+          },
+          {
+            "id": "tl2cp667g",
+            "name": "New subscription Follow up",
+            "content": "New subscription Follow up { Voice }"
+          },
+          {
+            "id": "o5p6xfv5e",
+            "name": "New subscription Complaint",
+            "content": "New subscription Complaint { Voice }"
+          },
+          {
+            "id": "btcdrtub6",
+            "name": "Transferred To GSM Directly",
+            "content": "Transferred To GSM Directly { Voice }"
+          },
+          {
+            "id": "s948sjzjm",
+            "name": "No Answer",
+            "content": "No Answer [Chat Beginning] { Voice }"
+          },
+          {
+            "id": "7mh0c5nrw",
+            "name": "Line Transfer Precedure",
+            "content": "Line Transfer Precedure { Voice }"
+          },
+          {
+            "id": "4rrkndrvq",
+            "name": "Change Data",
+            "content": "Change Data { Voice }"
+          },
+          {
+            "id": "c32geim6h",
+            "name": "Change Phone Number",
+            "content": "Change Phone Number { Voice }"
+          },
+          {
+            "id": "5zljf4dqa",
+            "name": "WE Ardy Bundles",
+            "content": "WE Ardy Bundles { Voice }"
+          },
+          {
+            "id": "0doeahmq7",
+            "name": "Telegram",
+            "content": "Telegram { Voice }"
+          },
+          {
+            "id": "icnsn1r83",
+            "name": "Fax",
+            "content": "Fax { Voice }"
+          },
+          {
+            "id": "c5cquyy8w",
+            "name": "Tools Outage",
+            "content": "Tools Outage { Voice }"
+          },
+          {
+            "id": "yu3z72q1t",
+            "name": "Devices",
+            "content": "Devices { Voice }"
+          },
+          {
+            "id": "notz7tp6v",
+            "name": "Receiving Only Problem",
+            "content": "Receiving Only Problem { Voice }"
+          },
+          {
+            "id": "7a68idjoi",
+            "name": "Receiving Only VAS",
+            "content": "Receiving Only VAS { Voice }"
+          },
+          {
+            "id": "ukq47p6um",
+            "name": "Online Payment Complaint",
+            "content": "Online Payment Complaint { Voice }"
+          },
+          {
+            "id": "5hxqovv1a",
+            "name": "Online Payment Inquiry",
+            "content": "Online Payment Inquiry { Voice }"
+          },
+          {
+            "id": "j6wztolx2",
+            "name": "Internet Issue after Paying Voice Bill",
+            "content": "Internet Issue after Paying Voice Bill  { Voice }"
+          },
+          {
+            "id": "1p0ccmlgi",
+            "name": "Other Billing Cases",
+            "content": "Other Billing Cases { Voice }"
+          },
+          {
+            "id": "6o3augimk",
+            "name": "Temp Suspension Request",
+            "content": "Temp Suspension Request { Voice }"
+          },
+          {
+            "id": "1lp3d9spg",
+            "name": "Line Cancelation",
+            "content": "Line Cancelation { Voice }"
+          },
+          {
+            "id": "ipht6x296",
+            "name": "Temp Suspension Due to Bill",
+            "content": "Temp Suspension Due to Bill { Voice }"
+          },
+          {
+            "id": "zeay6fi92",
+            "name": "Final Deactivation Due to Bill",
+            "content": "Final Deactivation Due to Bill { Voice }"
+          },
+          {
+            "id": "mmbzph0hk",
+            "name": "Caller ID",
+            "content": "Caller ID { Voice }"
+          },
+          {
+            "id": "44bv9t5vw",
+            "name": "Alarm",
+            "content": "Alarm { Voice }"
+          },
+          {
+            "id": "u9ogp5qiv",
+            "name": "National",
+            "content": "National { Voice }"
+          },
+          {
+            "id": "i6pc9acav",
+            "name": "International",
+            "content": "International { Voice }"
+          },
+          {
+            "id": "7nfc2mmdn",
+            "name": "Don't Disturb",
+            "content": "Don't Disturb { Voice }"
+          },
+          {
+            "id": "5lb86cru7",
+            "name": "New Offer Inquiry",
+            "content": "New Offer Inquiry { Voice }"
+          },
+          {
+            "id": "r1gnauyvf",
+            "name": "SMS Campaign",
+            "content": "SMS Campaign { Voice }"
+          },
+          {
+            "id": "pz5a7dm2t",
+            "name": "National Offer",
+            "content": "National Offer { Voice }"
+          },
+          {
+            "id": "l6tt8exei",
+            "name": "Governmental Offer",
+            "content": "Governmental Offer { Voice }"
+          },
+          {
+            "id": "z89z1j8v2",
+            "name": "Tools Outage",
+            "content": "Tools Outage { Voice }"
+          },
+          {
+            "id": "o9ysnh6ln",
+            "name": "Handled Then Transferred To GSM",
+            "content": "Handled Then Transferred To GSM { Voice }"
+          },
+          {
+            "id": "kinvvqepe",
+            "name": "Transferred To GSM Directly",
+            "content": "Transferred To GSM Directly { Voice }"
+          },
+          {
+            "id": "qp0xgj4yc",
+            "name": "Dropped without Customer's Inquiry",
+            "content": "Dropped without Customer's Inquiry { Voice }"
+          },
+          {
+            "id": "x0kfpvadi",
+            "name": "Dropped - Customer Side",
+            "content": "Dropped - Customer Side { Voice }"
+          },
+          {
+            "id": "iwzylkk7n",
+            "name": "Dropped before being Transferred to Related Queue",
+            "content": "Dropped before being Transferred to Related Queue { Voice }"
+          },
+          {
+            "id": "iqk77gzid",
+            "name": "No Answer",
+            "content": "No Answer [Chat Beginning] { Voice }"
+          },
+          {
+            "id": "w043nhzks",
+            "name": "Idle Customer",
+            "content": "Idle Customer { Voice }"
+          },
+          {
+            "id": "8aysa3p8o",
+            "name": "Package Explanation",
+            "content": "Package Explanation { Voice }"
+          },
+          {
+            "id": "ev9kr2hzg",
+            "name": "Line Data",
+            "content": "Line Data { Voice }"
+          },
+          {
+            "id": "m1wv8vdcw",
+            "name": "Change Line Category",
+            "content": "Change Line Category { Voice }"
+          },
+          {
+            "id": "4rh7b24vr",
+            "name": "Change Line Type",
+            "content": "Change Line Type { Voice }"
+          },
+          {
+            "id": "avoiujhrb",
+            "name": "Change Ownership",
+            "content": "Change Ownership { Voice }"
+          },
+          {
+            "id": "hk79iq1ui",
+            "name": "Change Package",
+            "content": "Change Package { Voice }"
+          },
+          {
+            "id": "chevswe8n",
+            "name": "Change External Cable",
+            "content": "Change External Cable { Voice }"
+          },
+          {
+            "id": "izsh7qj32",
+            "name": "Change Internal Cable",
+            "content": "Change Internal Cable { Voice }"
+          },
+          {
+            "id": "lpjiig37w",
+            "name": "WE Ardy Bundles",
+            "content": "WE Ardy Bundles { Voice }"
+          },
+          {
+            "id": "4dztci65u",
+            "name": "WE Ardy Change Package",
+            "content": "WE Ardy Change Package { Voice }"
+          },
+          {
+            "id": "72dn6ch4d",
+            "name": "WE Ardy Change Package",
+            "content": "WE Ardy Change Package { Voice }"
+          },
+          {
+            "id": "vz1dnzx4u",
+            "name": "Super Telephonet Bills",
+            "content": "Super Telephonet Bills { Voice }"
+          },
+          {
+            "id": "pye5408ww",
+            "name": "Super Telephonet Complaints",
+            "content": "Super Telephonet Complaints { Voice }"
+          },
+          {
+            "id": "68wu1xrt3",
+            "name": "Company Process/Policy",
+            "content": "Company Process/Policy { Voice }"
+          },
+          {
+            "id": "m05k4d5m0",
+            "name": "Change Box",
+            "content": "Change Box { Voice }"
+          },
+          {
+            "id": "ri5p8dqyf",
+            "name": "140 Directory",
+            "content": "140 Directory { Voice }"
+          },
+          {
+            "id": "h5ycwswea",
+            "name": "Kalamy",
+            "content": "Kalamy { Voice }"
+          },
+          {
+            "id": "i98urbry8",
+            "name": "Annual Line",
+            "content": "Annual Line { Voice }"
+          },
+          {
+            "id": "6f3lrtyvy",
+            "name": "General Inquiry",
+            "content": "General Inquiry { Voice }"
+          }
+        ],
         "parentId": null
       },
       {
@@ -533,7 +899,7 @@
         "parentId": null
       }
     ],
-    "currentCategory": "sww5pv7bd",
+    "currentCategory": "u9rau31ai",
     "editingCategory": null,
     "editingItem": null
   },
