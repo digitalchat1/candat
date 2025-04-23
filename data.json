@@ -144,6 +144,236 @@
             "id": "4t7bickd5",
             "name": "Complaint",
             "content": "Complaint [ADSL]"
+          },
+          {
+            "id": "or88qxzzc",
+            "name": "Salefny",
+            "content": "Salefny [ADSL]"
+          },
+          {
+            "id": "ohu1yrl9x",
+            "name": "Username & Password",
+            "content": "Username & Password [T]"
+          },
+          {
+            "id": "04kn3xgxe",
+            "name": "TE Bills Residential",
+            "content": "TE Bills Residential [ADSL]"
+          },
+          {
+            "id": "q0ar8cg70",
+            "name": "Change Phone number",
+            "content": "Change Phone number [ADSL]"
+          },
+          {
+            "id": "jojqjn5ek",
+            "name": "Refund",
+            "content": "Refund [Data] [ADSL]"
+          },
+          {
+            "id": "44b50vgto",
+            "name": "OP Technical Issue",
+            "content": "OP Technical Issue [ADSL]"
+          },
+          {
+            "id": "km74w8ibv",
+            "name": "OP Technical Issue",
+            "content": "OP Technical Issue [ADSL]"
+          },
+          {
+            "id": "nzzpy8uyg",
+            "name": "Contact Us",
+            "content": "Contact Us [ADSL]"
+          },
+          {
+            "id": "5u7qho7q5",
+            "name": "Offers",
+            "content": "Offers [ADSL]"
+          },
+          {
+            "id": "0vpz2lw9w",
+            "name": "Balance Fraction",
+            "content": "Balance Fraction (Adjustment Case)"
+          },
+          {
+            "id": "ah14zwj4k",
+            "name": "WATCH IT",
+            "content": "WATCH IT [ADSL]"
+          },
+          {
+            "id": "a3p9n4wwq",
+            "name": "WE Top UP",
+            "content": "WE Top UP [ADSL]"
+          },
+          {
+            "id": "wczzp3spa",
+            "name": "Harassment/Scam Chats",
+            "content": "Harassment/Scam Chats[ADSL]"
+          },
+          {
+            "id": "z3h1xa1vd",
+            "name": "Indigo",
+            "content": "Indigo [ADSL]"
+          },
+          {
+            "id": "yvac9qqm9",
+            "name": "Telephonet",
+            "content": "Telephonet [ADSL]"
+          },
+          {
+            "id": "9dspmmbh3",
+            "name": "Level up",
+            "content": "Level up [ADSL]"
+          },
+          {
+            "id": "205779fcq",
+            "name": "Careers",
+            "content": "Careers [ADSL]"
+          },
+          {
+            "id": "ot54xggjp",
+            "name": "Happy Customer",
+            "content": "Happy Customer [ADSL]"
+          },
+          {
+            "id": "6dj7mpwgo",
+            "name": "Spamming",
+            "content": "Spamming [ADSL]"
+          },
+          {
+            "id": "gmlrdpg4l",
+            "name": "Tools Outage",
+            "content": "Tools Outage [ADSL]"
+          },
+          {
+            "id": "y1gufm12l",
+            "name": "Online Payment",
+            "content": "Online Payment [ADSL]"
+          },
+          {
+            "id": "kd3f02j5k",
+            "name": "Individual cases",
+            "content": "Individual cases [ADSL]"
+          },
+          {
+            "id": "3n7i35517",
+            "name": "Quota Recharged",
+            "content": "Quota Recharged (Adjustment Case) [ADSL]"
+          },
+          {
+            "id": "0a63ruy14",
+            "name": "Link Agreement",
+            "content": "Link Agreement [ADSL]"
+          },
+          {
+            "id": "br4bqrg5h",
+            "name": "WE Space",
+            "content": "(we space) [ADSL]"
+          },
+          {
+            "id": "xuekpb0jp",
+            "name": "WE Bonus",
+            "content": "WE Bonus [ADSL]"
+          },
+          {
+            "id": "c3f59aww0",
+            "name": "Balance",
+            "content": "Balance [ADSL]"
+          },
+          {
+            "id": "8yc638wju",
+            "name": "Recharge by mistake",
+            "content": "Recharge by mistake [ADSL]"
+          },
+          {
+            "id": "xxwuf8uhu",
+            "name": "Suspended Service",
+            "content": "Suspended Service [Data] [ADSL]"
+          },
+          {
+            "id": "qo50cp8in",
+            "name": "E-Machines Payment",
+            "content": "E-Machines Payment [ADSL]"
+          },
+          {
+            "id": "2z6a4oqc0",
+            "name": "CVM Q1 Promo",
+            "content": "CVM Q1 Promo [ADSL]"
+          },
+          {
+            "id": "pc7nmnydi",
+            "name": "Ramdan We Bonus loyalty 360",
+            "content": "Ramdan We Bonus loyalty 360 [ADSL]"
+          },
+          {
+            "id": "l94efyi5y",
+            "name": "Watch iT Ramadan Promo",
+            "content": "Watch iT Ramadan Promo [ADSL]"
+          },
+          {
+            "id": "ttlkpbty2",
+            "name": "Ramadan Promo 2022",
+            "content": "Ramadan Promo 2022 [ADSL]"
+          },
+          {
+            "id": "8u1tsvmsu",
+            "name": "Unlimited Hashtag Campaign",
+            "content": "Unlimited Hashtag Campaign [ADSL]"
+          },
+          {
+            "id": "ch0ivk9uq",
+            "name": "Unclear inquiry Idle or Dropped",
+            "content": "Unclear inquiry Idle or Dropped [ADSL]"
+          },
+          {
+            "id": "9ahacilxu",
+            "name": "Idle or Dropped Before transfer",
+            "content": "Idle or Dropped Before transfer [ADSL]"
+          },
+          {
+            "id": "6444sbyqd",
+            "name": "BSS Sales",
+            "content": "BSS Sales [ADSL]"
+          },
+          {
+            "id": "8kdc7y4rk",
+            "name": "Multiple Account – Registered",
+            "content": "Multiple Account – Registered"
+          },
+          {
+            "id": "4thzg8wq7",
+            "name": "Multiple Account – Anonymous",
+            "content": "Multiple Account – Anonymous [ADSL]"
+          },
+          {
+            "id": "mgyrzmovu",
+            "name": "VDSL Port VS ADSL CPE",
+            "content": "VDSL Port VS ADSL CPE [ADSL]"
+          },
+          {
+            "id": "r7ahcsjrh",
+            "name": "Store Location",
+            "content": "Store Location [ADSL]"
+          },
+          {
+            "id": "2ql5da1nq",
+            "name": "The compensation added on new line",
+            "content": "The compensation added on new line"
+          },
+          {
+            "id": "cg6d0r210",
+            "name": "Customer accept the compensation",
+            "content": "Customer accept the compensation"
+          },
+          {
+            "id": "06lxx3vat",
+            "name": "Customer don’t have WE line",
+            "content": "Customer don’t have WE line"
+          },
+          {
+            "id": "kehssdmpp",
+            "name": "Customer refuse the compensation",
+            "content": "Customer refuse the compensation"
           }
         ],
         "parentId": null
