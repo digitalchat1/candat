@@ -381,7 +381,143 @@
       {
         "id": "sww5pv7bd",
         "name": "Tech Tags",
-        "items": [],
+        "items": [
+          {
+            "id": "ciehr4yvi",
+            "name": "Physical Problem",
+            "content": "Physical Problem [T]"
+          },
+          {
+            "id": "lckjv0xv4",
+            "name": "BLQ",
+            "content": "BLQ [T] [ADSL]"
+          },
+          {
+            "id": "789q1hj3x",
+            "name": "Data Down",
+            "content": "Data Down [ADSL]"
+          },
+          {
+            "id": "j6ukgvjym",
+            "name": "Data & Voice Down",
+            "content": "Data & Voice Down [ADSL]"
+          },
+          {
+            "id": "ntohb5blp",
+            "name": "Voice Down",
+            "content": "Voice Down [ADSL]"
+          },
+          {
+            "id": "rjstiqd57",
+            "name": "Slowness",
+            "content": "Slowness [T] [ADSL]"
+          },
+          {
+            "id": "zofnta1g3",
+            "name": "Wireless",
+            "content": "Wireless [Problem - Settings] [T]"
+          },
+          {
+            "id": "3q9ba104v",
+            "name": "Browsing",
+            "content": "Browsing [T] [ADSL]"
+          },
+          {
+            "id": "fy5ozb29z",
+            "name": "Need Optimization",
+            "content": "Need Optimization [ADSL]"
+          },
+          {
+            "id": "epumasz4v",
+            "name": "Unable to obtain IP",
+            "content": "Unable to obtain IP [T]"
+          },
+          {
+            "id": "pd1srlndi",
+            "name": "Logical Instability",
+            "content": "Logical Instability [T]"
+          },
+          {
+            "id": "85mgz781l",
+            "name": "Logical Instability",
+            "content": "Logical Instability [T]"
+          },
+          {
+            "id": "g5u9hq83x",
+            "name": "Global Problem",
+            "content": "Global Problem [T] [ADSL]"
+          },
+          {
+            "id": "dke9xqdy6",
+            "name": "Wrong card and port",
+            "content": "Wrong card and port [ADSL]"
+          },
+          {
+            "id": "7rqx57qca",
+            "name": "OP Technical Issue",
+            "content": "OP Technical Issue [ADSL]"
+          },
+          {
+            "id": "pprnsqpfw",
+            "name": "Family Technical Issue",
+            "content": "Family Technical Issue [ADSL]"
+          },
+          {
+            "id": "onlkv64sv",
+            "name": "Online Games",
+            "content": "Online Games [ADSL]"
+          },
+          {
+            "id": "o3cak2dtt",
+            "name": "Username & Password",
+            "content": "Username & Password [T]"
+          },
+          {
+            "id": "250cdj0us",
+            "name": "Hosting Technical Issue",
+            "content": "Hosting Technical Issue [ADSL]"
+          },
+          {
+            "id": "p3tbjrqp6",
+            "name": "Disabled matrix",
+            "content": "Disabled matrix [ADSL]"
+          },
+          {
+            "id": "wzq3eddcw",
+            "name": "Unsupported Cases",
+            "content": "Unsupported Cases [ADSL]"
+          },
+          {
+            "id": "wcia54vfx",
+            "name": "Dropped - Troubleshooting",
+            "content": "Dropped - Troubleshooting [ADSL]"
+          },
+          {
+            "id": "nkqt61skd",
+            "name": "Voice overlapping",
+            "content": "Voice overlapping [ADSL]"
+          },
+          {
+            "id": "22q9wa82o",
+            "name": "VOIP",
+            "content": "VOIP [ADSL]"
+          },
+          {
+            "id": "lszthliys",
+            "name": "Delay-Escalation",
+            "content": "Delay-Escalation [ADSL]"
+          },
+          {
+            "id": "oihesq5xc",
+            "name": "FTTH Migration - Manual Suspension HK",
+            "content": "FTTH Migration - Manual Suspension HK [ADSL]"
+          },
+          {
+            "id": "p39wnclz6",
+            "name": "BSS Technical [ADSL]",
+            "content": "BSS Technical"
+          }
+        ],
         "parentId": null
       },
       {
@@ -397,7 +533,7 @@
         "parentId": null
       }
     ],
-    "currentCategory": "m0g0lpa11",
+    "currentCategory": "sww5pv7bd",
     "editingCategory": null,
     "editingItem": null
   },
