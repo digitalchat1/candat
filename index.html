@@ -514,47 +514,88 @@
 
             // تحميل البيانات
             async function loadData() {
-                try {
-                    console.log('Loading data.json...');
-                    const response = await fetch('data.json', { cache: 'no-store' });
-                    if (!response.ok) throw new Error(`HTTP error ${response.status}`);
-                    const jsonData = await response.json();
-                    appData.tags = jsonData.tagsData || { categories: [], currentCategory: null };
-                    appData.candat = jsonData.candatData || { categories: [], currentCategory: null };
-                    if (appData.tags.categories.length > 0) appData.tags.currentCategory = appData.tags.categories[0].id;
-                    if (appData.candat.categories.length > 0) appData.candat.currentCategory = appData.candat.categories[0].id;
-                    console.log('Data loaded:', appData);
-                    showNotification('تم تحميل البيانات بنجاح');
-                } catch (error) {
-                    console.error('Failed to load data.json:', error);
-                    showNotification('فشل تحميل البيانات، يتم استخدام البيانات الافتراضية');
-                    appData = {
-                        tags: {
-                            categories: [
-                                { id: 'sales', name: 'Sales Tags', items: [
-                                    { id: '1', name: 'Invoice Inquiry', content: 'Invoice Inquiry [ADSL]' },
-                                    { id: '2', name: 'Early Renewal', content: 'Early renewal [ADSL]' }
-                                ]},
-                                { id: 'tech', name: 'Tech Tags', items: [
-                                    { id: '3', name: 'Physical Problem', content: 'Physical Problem [T]' },
-                                    { id: '4', name: 'BLQ', content: 'BLQ [T] [ADSL]' }
-                                ]}
-                            ],
-                            currentCategory: 'sales'
-                        },
-                        candat: {
-                            categories: [
-                                { id: 'main1', name: 'Main Category 1', parentId: null, items: [
-                                    { id: '1', name: 'Candat 1', content: 'Content for Candat 1' },
-                                    { id: '2', name: 'Candat 2', content: 'Content for Candat 2' }
-                                ]},
-                                { id: 'sub1', name: 'Sub Category 1', parentId: 'main1', items: [
-                                    { id: '3', name: 'Sub Candat 1', content: 'Content for Sub Candat 1' }
-                                ]}
-                            ],
-                            currentCategory: 'main1'
+                const maxRetries = 3;
+                let attempts = 0;
+
+                async function tryFetchData(path) {
+                    try {
+                        console.log(`Attempting to load ${path} (Attempt ${attempts + 1}/${maxRetries})...`);
+                        const response = await fetch(path, { cache: 'no-store' });
+                        if (!response.ok) {
+                            throw new Error(`HTTP error ${response.status}: ${response.statusText}`);
                         }
-                    };
+                        const jsonData = await response.json();
+                        console.log('Data loaded successfully:', jsonData);
+                        return jsonData;
+                    } catch (error) {
+                        console.error(`Failed to load ${path}:`, error.message);
+                        throw error;
+                    }
+                }
+
+                while (attempts < maxRetries) {
+                    attempts++;
+                    try {
+                        let jsonData;
+                        // جرب المسار الأساسي
+                        try {
+                            jsonData = await tryFetchData('data.json');
+                        } catch (error) {
+                            // لو فشل، جرب مسار بديل
+                            console.log('Trying alternative path ./data.json...');
+                            jsonData = await tryFetchData('./data.json');
+                        }
+
+                        // تحديث البيانات
+                        appData.tags = jsonData.tagsData || { categories: [], currentCategory: null };
+                        appData.candat = jsonData.candatData || { categories: [], currentCategory: null };
+                        if (appData.tags.categories.length > 0) appData.tags.currentCategory = appData.tags.categories[0].id;
+                        if (appData.candat.categories.length > 0) appData.candat.currentCategory = appData.candat.categories[0].id;
+                        showNotification('تم تحميل البيانات بنجاح');
+                        return; // خرج لو التحميل نجح
+                    } catch (error) {
+                        if (attempts === maxRetries) {
+                            console.error('All attempts to load data.json failed. Using default data.');
+                            let errorMessage = 'فشل تحميل data.json';
+                            if (error.message.includes('404')) {
+                                errorMessage = 'ملف data.json غير موجود';
+                            } else if (error.message.includes('NetworkError') || error.message.includes('Failed to fetch')) {
+                                errorMessage = 'مشكلة في الاتصال أو الخادم. تأكد من تشغيل الموقع على خادم';
+                            }
+                            showNotification(errorMessage);
+                            // استخدام البيانات الافتراضية
+                            appData = {
+                                tags: {
+                                    categories: [
+                                        { id: 'sales', name: 'Sales Tags', items: [
+                                            { id: '1', name: 'Invoice Inquiry', content: 'Invoice Inquiry [ADSL]' },
+                                            { id: '2', name: 'Early Renewal', content: 'Early renewal [ADSL]' }
+                                        ]},
+                                        { id: 'tech', name: 'Tech Tags', items: [
+                                            { id: '3', name: 'Physical Problem', content: 'Physical Problem [T]' },
+                                            { id: '4', name: 'BLQ', content: 'BLQ [T] [ADSL]' }
+                                        ]}
+                                    ],
+                                    currentCategory: 'sales'
+                                },
+                                candat: {
+                                    categories: [
+                                        { id: 'main1', name: 'Main Category 1', parentId: null, items: [
+                                            { id: '1', name: 'Candat 1', content: 'Content for Candat 1' },
+                                            { id: '2', name: 'Candat 2', content: 'Content for Candat 2' }
+                                        ]},
+                                        { id: 'sub1', name: 'Sub Category 1', parentId: 'main1', items: [
+                                            { id: '3', name: 'Sub Candat 1', content: 'Content for Sub Candat 1' }
+                                        ]}
+                                    ],
+                                    currentCategory: 'main1'
+                                }
+                            };
+                        } else {
+                            console.log(`Retrying after 1 second...`);
+                            await new Promise(resolve => setTimeout(resolve, 1000));
+                        }
+                    }
                 }
             }
 
