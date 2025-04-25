@@ -11,6 +11,12 @@
       "name": "Junk Qouta",
       "url": "https://digitalchat1.github.io/cdr/",
       "type": "iframe"
+    },
+    {
+      "id": "77iynft3h",
+      "name": "Price Calculator",
+      "url": "https://digitalchat1.github.io/calc/",
+      "type": "iframe"
     }
   ],
   "tags": {
