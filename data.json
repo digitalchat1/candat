@@ -2839,13 +2839,13 @@
       },
       {
         "id": "l62cdvsdt",
-        "name": "CPE",
+        "name": "CPE Configuration",
         "items": [],
         "parentId": null
       },
       {
         "id": "n3tmnnhmz",
-        "name": "ONT",
+        "name": "ONT Configuration",
         "items": [
           {
             "id": "2ibtph0jv",
@@ -3728,8 +3728,8 @@
         "parentId": "l62cdvsdt"
       }
     ],
-    "currentCategory": "eiue9rmge",
-    "editingCategory": null,
+    "currentCategory": "3l08eg3pj",
+    "editingCategory": "n3tmnnhmz",
     "editingItem": null
   }
 }
