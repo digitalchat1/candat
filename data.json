@@ -2646,7 +2646,7 @@
       },
       {
         "id": "a75805s25",
-        "name": "Offers",
+        "name": "Offers Universal",
         "items": [
           {
             "id": "elkehrlv5",
@@ -2730,7 +2730,7 @@
       },
       {
         "id": "c6q74o3pw",
-        "name": "Devices",
+        "name": "Devices Prices",
         "items": [
           {
             "id": "iweq90e5g",
@@ -2899,7 +2899,7 @@
       },
       {
         "id": "z0hxh8oj6",
-        "name": "NPS",
+        "name": "CSI Enhancement",
         "items": [
           {
             "id": "klgxak24u",
@@ -3728,8 +3728,8 @@
         "parentId": "l62cdvsdt"
       }
     ],
-    "currentCategory": "3l08eg3pj",
-    "editingCategory": "n3tmnnhmz",
+    "currentCategory": "c6q74o3pw",
+    "editingCategory": "c6q74o3pw",
     "editingItem": null
   }
 }
